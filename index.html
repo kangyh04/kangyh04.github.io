@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김개발 - 이력서</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #95a5a6;
+            border: 4px solid rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            color: #3498db;
+        }
+
+        .experience-item, .education-item, .project-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover, .project-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .item-company {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .item-period {
+            background: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .item-period {
+                margin-top: 10px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-img">👨‍💻</div>
+            <h1>김개발</h1>
+            <p>풀스택 개발자</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>연락처</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <span>dev.kim@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <span>010-1234-5678</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🏠</div>
+                        <span>서울특별시</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🔗</div>
+                        <span>github.com/your-username</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>자기소개</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #555;">
+                    안녕하세요! 3년차 풀스택 개발자 김개발입니다. 
+                    사용자 중심의 웹 애플리케이션 개발에 열정을 가지고 있으며, 
+                    새로운 기술 학습과 팀워크를 중시합니다. 
+                    효율적이고 확장 가능한 코드 작성을 통해 비즈니스 가치 창출에 기여하고 싶습니다.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>경력</h2>
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">프론트엔드 개발자</div>
+                            <div class="item-company">테크스타트업 (주)</div>
+                        </div>
+                        <div class="item-period">2022.03 - 현재</div>
+                    </div>
+                    <ul>
+                        <li>React 기반 웹 애플리케이션 개발 및 유지보수</li>
+                        <li>TypeScript 도입으로 코드 안정성 30% 향상</li>
+                        <li>성능 최적화를 통한 페이지 로딩 속도 40% 개선</li>
+                        <li>반응형 디자인 구현으로 모바일 사용자 만족도 증대</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">웹 개발 인턴</div>
+                            <div class="item-company">웹에이전시 (주)</div>
+                        </div>
+                        <div class="item-period">2021.06 - 2021.12</div>
+                    </div>
+                    <ul>
+                        <li>HTML, CSS, JavaScript를 이용한 랜딩페이지 제작</li>
+                        <li>WordPress 기반 웹사이트 개발 및 관리</li>
+                        <li>클라이언트 요구사항 분석 및 UI/UX 개선</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>학력</h2>
+                <div class="education-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">컴퓨터공학과 학사</div>
+                            <div class="item-company">○○대학교</div>
+                        </div>
+                        <div class="item-period">2017.03 - 2021.02</div>
+                    </div>
+                    <ul>
+                        <li>전공 GPA: 3.8/4.5</li>
+                        <li>졸업작품: 실시간 채팅 웹 애플리케이션</li>
+                        <li>프로그래밍 동아리 회장 (2019-2020)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>기술 스택</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">TypeScript</div>
+                    <div class="skill-item">React</div>
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">HTML/CSS</div>
+                    <div class="skill-item">Git</div>
+                    <div class="skill-item">MySQL</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>프로젝트</h2>
+                <div class="project-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">개인 블로그 플랫폼</div>
+                            <div class="item-company">개인 프로젝트</div>
+                        </div>
+                        <div class="item-period">2023.01 - 2023.03</div>
+                    </div>
+                    <ul>
+                        <li>React + Node.js + MongoDB를 이용한 블로그 플랫폼</li>
+                        <li>JWT 기반 인증 시스템 구현</li>
+                        <li>마크다운 에디터 및 이미지 업로드 기능</li>
+                        <li>반응형 디자인으로 모든 디바이스 지원</li>
+                    </ul>
+                </div>
+
+                <div class="project-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">할일 관리 앱</div>
+                            <div class="item-company">팀 프로젝트 (4인)</div>
+                        </div>
+                        <div class="item-period">2022.09 - 2022.11</div>
+                    </div>
+                    <ul>
+                        <li>Vue.js를 이용한 SPA 개발</li>
+                        <li>드래그 앤 드롭으로 직관적인 UI 구현</li>
+                        <li>PWA 기술 적용으로 오프라인 사용 가능</li>
+                        <li>팀 협업을 위한 실시간 동기화 기능</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>자격증 & 어학</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">자격증</h3>
+                        <ul>
+                            <li>정보처리기사 (2021)</li>
+                            <li>SQLD (2022)</li>
+                            <li>리눅스마스터 2급 (2021)</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">어학능력</h3>
+                        <ul>
+                            <li>토익 850점 (2022)</li>
+                            <li>영어 기술문서 읽기 가능</li>
+                            <li>기본적인 영어 의사소통 가능</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 부드러운 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // 스킬 아이템 클릭 효과
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.style.animation = 'none';
+                setTimeout(() => {
+                    item.style.animation = '';
+                }, 10);
+            });
+        });
+
+        // 연락처 아이템 클릭 시 복사
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const text = item.querySelector('span').textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    // 간단한 피드백
+                    const originalBg = item.style.backgroundColor;
+                    item.style.backgroundColor = '#d4edda';
+                    setTimeout(() => {
+                        item.style.backgroundColor = originalBg;
+                    }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
