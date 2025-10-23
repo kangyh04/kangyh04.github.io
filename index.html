@@ -262,13 +262,33 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        [data-lang]{
+            display: none;
+        }
+
+        body[data-active-lang="ko"] [data-lang="ko"],
+        body[data-active-lang="ja"] [data-lang="ja"]{
+            display: block;
+        }
     </style>
 </head>
-<body>
+<body data-active-lang="ko">
+    <div class="language-selector">
+        <select id="languageSelect" onchange="changeLanguage(this.value)">
+            <option value="ko">KR 한국어</option>
+            <option value="ja">JP 日本語</option>
+        </select>
+    </div>
     <div class="container">
         <div class="header">
             <div class="profile-img">👨‍💻</div>
-            <h1>강영휘</h1>
+            <div data-lang="ko">
+                <h1>강영휘</h1>
+            </div>
+            <div data-lang="ja">
+                <h1>カンヨンフィ</h1>
+            </div>
         </div>
 
         <div class="content">
@@ -333,16 +353,19 @@
                             </div>
                         </div>
                         <ul>
-                            <li>DX12를 바람 물리 시뮬레이션 기반 풀 애니메이션</li>
+                            <li>GPU 기반 실시간 풀 애니메이션</li>
                             <li>
                             <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                                 <iframe src="https://www.youtube.com/embed/3B_BhG7PLUI?si=1j9ZffxXODKRvpGY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                             </div>
                             </li>
                             <li>
-                                Point와 Bone 데이터를 GPU로 전송하여, Compute Shader에서 바람에 의한 애니메이션 처리를 수행하고 Geometry Shader에서 Point를 활용한 빌보드 폴리곤 동적 생성을 통해 구현한 동적 풀 시뮬레이션입니다.<br>
-                                바람 속도 벡터를 기반으로 토크(Torque)를 계산하고, 복원력(Restore Force)과 감쇠(Damping)를 적용하여 풀의 움직임을 표현했습니다.<br>
+                                핵심 기술<br>
+                                • DirectX 12 Compute Shader로 160개 풀잎 동시 계산<br>
+                                • 관성 모멘트 기반 사실적인 바람 반응<br>
+                                • Geometry Shader로 빌보드 동적 생성<br>
                             </li>
+                            <li>소스코드 : <a href="https://github.com/kangyh04/grass">grass</a></li>
                             <li>DX12, C++, Hlsl</li>
                         </ul>
                     </div>
@@ -354,16 +377,24 @@
                             </div>
                         </div>
                         <ul>
-                            <li>UE5를 이용한 평면을 곡면으로 만드는 쉐이더</li>
+                            <li>Planet Curvature Shader (행성 곡률 쉐이더)</li>
                             <li>
                             <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                                 <iframe src="https://www.youtube.com/embed/XVvSxCRv6B0?si=8NqZkZjCbBV_4Y-t" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                             </div>
                             </li>
                             <li>
-                                정점과 카메라와의 거리로 거리가 멀수록 Y축의 변화량을 크게해서 평면을 곡면처럼 보이게하는 쉐이더를 만들었습니다.
+                                핵심 기술<br>
+                                • 카메라 거리 기반 버텍스 디스플레이스먼트<br>
+                                • Material Graph로 파라미터 조정 기능<br>
+                                • "Forza Horizon" 등에 사용되는 스타일 효과<br>
                             </li>
-                            <li>Unreal Engine5, Material Node</li>
+                            <li>
+                                특징<br>
+                                • 평면/사막등에서의 곡률 표현<br>
+                            </li>
+                            <li>Unreal Engine5, Material Node, HLSL</li>
+                            <li>소스코드 : <a href="https://github.com/kangyh04/MeshBending">MeshBending</a></li>
                             <li>참고 자료 : <a href="https://qiita.com/ducchy/items/566e526df0183588054f">【Unity】シェーダーで世界を曲げる</a></li>
                         </ul>
                     </div>
@@ -375,16 +406,23 @@
                         </div>
                     </div>
                     <ul>
-                        <li>DX12를 이용한 Ellers Maze</li>
+                        <li>절차적 미로 생성 알고리즘 (Eller's Algorithm)</li>
                         <li>
                         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                             <iframe src="https://www.youtube.com/embed/WE9RBmai6X8?si=H2scsikjAAoCoSwe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                         </div>
                         </li>
                         <li>
-                            Ellers Maze를 만들고 동적으로 미로를 무작위로 만드는 기능을 만들었습니다.
+                            핵심 기술<br>
+                            • Eller's Algorithm으로 미로 자동 생성<br>
+                            • DirectX 12로 실시간 3D 시각화<br>
+                            • 행 단위 처리로 메모리 효율적<br>
                         </li>
-                        <li>DirectX12, C++</li>
+                        <li>
+                            활용 : 로그라이크, 던전 생성, 알고리즘 시각화
+                        </li>
+                        <li>DirectX12, C++, 그래프 알고리즘</li>
+                        <li>소스코드 : <a href="https://github.com/kangyh04/EllersMaze">EllersMaze</a></li>
                     </ul>
                 </div>
 
@@ -395,14 +433,17 @@
                         </div>
                     </div>
                     <ul>
-                        <li>DX12를 이용한 DynamicCubeMap</li>
+                        <li>실시간 환경 반사 렌더링</li>
                         <li>
                         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                             <iframe src="https://www.youtube.com/embed/fL2OVwk2uRQ?si=gGL1EhrJD3FjBheY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                         </div>
                         </li>
                         <li>
-                            DirectX12를 이용하여 다이나믹큐브맵을 만들고 시간에 따라 배경색이 바뀌는 Shader를 작성했습니다.
+                            핵심 기술<br>
+                            • 6방향 큐브맵 실시간 렌더링<br>
+                            • 가운데 금속 물체 기준 6방향 큐브맵을 동적 생성후 실시간 렌더링<br>
+                            • 시간 기반 동적 스카이박스<br>
                         </li>
                         <li>DirectX12, C++</li>
                     </ul>
@@ -411,7 +452,7 @@
                 <div class="project-item">
                     <div class="item-header">
                         <div>
-                            <div class="item-title">Offima</div>
+                            <div class="item-title">Offima - 인테리어 3D 시뮬레이션 앱(일본)</div>
                             <div class="item-company">Thrid Wave</div>
                         </div>
                     </div>
@@ -423,18 +464,25 @@
                         </div>
                         </li>
                         <li>
-                            Unreal Engine4에서 런타임으로 FBX를 임포트 및 익스포트하는 기능이 없기때문에 런타임 FBX임포트, 익스포트기능 개발<br>
-                            건물 모델을 프로그램내에서 생성 및 수정을하기위에 2D로 도면 제작 기능 및 2D로 그려진 도면을 바탕으로 3D모델데이터화 기능 개발<br>
-                            젠킨스를 이용해서 빌드 및 디플로이 자동화와 슬랙으로 통지기능 개발<br>
+                            담당 업무<br>
+                            • 런타임 FBX 처리 시스템 설계 및 구현 (C++)<br>
+                              - Unreal 미지원 기능을 자체 개발<br>
+                              - Import/Export 파이프라인 구축<br>
+                            • 2D -> 3D 자동 변환 시스템<br>
+                              - 평면 도면에서 3D 건물 모델 자동 생성<br>
+                              - 실시간 프리뷰 및 수정 기능<br>
+                            • DevOps 자동화<br>
+                              - Jenkins 기반 빌드/배포 자동화<br>
+                              - Slack 통합 알림 시스템<br>
                         </li>
-                        <li>Unreal Engine4(C++, BluePrint), Jenkins</li>
+                        <li>Unreal Engine4(C++, BluePrint), Jenkins, FBX, Python</li>
                     </ul>
                 </div>
 
                 <div class="project-item">
                     <div class="item-header">
                         <div>
-                            <div class="item-title">B-Project</div>
+                            <div class="item-title">B-Project - 모바일 리듬 게임(일본)</div>
                             <div class="item-company">Mages Lab</div>
                         </div>
                     </div>
@@ -446,17 +494,30 @@
                         </div>
                         </li>
                         <li>
-                            악보 제작용 툴<br>
-                            동영상 실행을 위해 도입한 CriWare에서 지원하지 않는 쉐이더 기능 추가 및 수정<br>
+                            담당 업무<br>
+                                • 악보 에디터 툴 개발<br>
+                                  - 기획자가 직접 사용 가능한 비주얼 에디터<br>
+                                  - 실시간 프리뷰 및 플레이 테스트 기능<br>
+                                  
+                                • CriWare 미들웨어 커스터마이징<br>
+                                  - 지원되지 않는 이펙트 기능 추가<br>
+                                
+                                • OutGame 시스템 전체 설계<br>
+                                  - 캐릭터 호감도 시스템<br>
+                                  - 음악 선택 화면 UI/UX<br>
                         </li>
-                        <li>Unity(C#, HLSL)</li>
+                        <li>
+                            성과<br>
+                                • 악보 제작 시간 50%이상 단축(기존 버튼기반 작업 후 앱 디버그 플레이 -> 툴 상에서 제작 및 테스트 플레이)<br>
+                        </li>
+                        <li>Unity(C#, HLSL), CriWare, nGui</li>
                     </ul>
                 </div>
 
                 <div class="project-item">
                     <div class="item-header">
                         <div>
-                            <div class="item-title">게슈탈트오딘</div>
+                            <div class="item-title">게슈탈트오딘 - 3D MORPG(일본)</div>
                             <div class="item-company">Aiming</div>
                         </div>
                     </div>
@@ -470,8 +531,21 @@
                         <li>건물과 절벽등 런타임으로 그림자를 계산할필요가 없는 부분의 그림자 처리를 위한 쉐도우맵 베이크 툴<br>
                             게임 전체에서 쓰일 기본 UI시스템<br>
                             Auto Play시 에리어전체를 이동할 Graph를 이용한 경로탐색
+                            담당 업무<br>
+                                • Shadow Baking Tool 개발<br>
+                                  - 정적 오브젝트용 쉐도우맵 사전 생성 툴<br>
+                                  - 런타임 연산 제거로 모바일 성능 최적화<br>
+                                  - 아티스트 친화적인 Unity Editor 확장<br>
+                                
+                                • UI 프레임워크 설계<br>
+                                  - NGUI 기반 재사용 가능한 컴포넌트 시스템<br>
+                                  - 게임 전체에서 일관된 UI/UX 제공<br>
+                                
+                                • 네비게이션 시스템<br>
+                                  - 다익스트라 알고리즘 기반 경로 탐색<br>
+                                  - Auto Play 기능 구현<br>
                         </li>
-                        <li>Unity(C#, HLSL)</li>
+                        <li>Unity(C#, HLSL), nGui, Dijkstra Algorithm</li>
                     </ul>
                 </div>
             </div>
@@ -521,6 +595,21 @@
                 });
             });
         });
+
+        function changeLanguage(lang) {
+            document.body.setAttribute('data-active-lang', lang);
+            localStorage.setItem('preferredLanguage', lang);
+
+            document.documentElement.lang = lang;
+        }
+
+        window.addEventListener('DOMContentLoaded', ()=>{
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang){
+                document.getElementById('languageSelect').value = savedLang;
+                changeLanguage(savedLang);
+            }
+        })
     </script>
 </body>
 </html>
