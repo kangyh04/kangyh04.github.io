@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>강영휘(Younghui Khang) - 이력서</title>
+    <title data-i18n="pageTitle">강영휘(Younghui Khang) - 이력서</title>
     <style>
         * {
             margin: 0;
@@ -230,6 +230,14 @@
             font-size: 0.8em;
         }
 
+        .no-arrow {
+            padding-left: 0 !important;
+        }
+
+        .no-arrow::before {
+            content: none !important;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -263,42 +271,26 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        [data-lang]{
-            display: none;
-        }
-
-        body[data-active-lang="ko"] [data-lang="ko"],
-        body[data-active-lang="ja"] [data-lang="ja"]{
-            display: block;
-        }
+        /* 기존 data-lang CSS는 제거하고 스크립트로 제어 */
     </style>
 </head>
-<body data-active-lang="ko">
+<body>
     <div class="language-selector">
-        <select id="languageSelect" onchange="changeLanguage(this.value)">
+        <select id="languageSelect">
             <option value="ko">KR 한국어</option>
             <option value="ja">JP 日本語</option>
+            <option value="en">EN English</option>
         </select>
     </div>
     <div class="container">
         <div class="header">
             <div class="profile-img">👨‍💻</div>
-            <div data-lang="ko">
-                <h1>강영휘</h1>
-            </div>
-            <div data-lang="ja">
-                <h1>カンヨンフィ</h1>
-            </div>
+            <h1 data-i18n="name">강영휘</h1>
         </div>
 
         <div class="content">
             <div class="section">
-                <div data-lang="ko">
-                    <h2>연락처</h2>
-                </div>
-                <div data-lang="ja">
-                    <h2>個人リンク</h2>
-                </div>
+                <h2 data-i18n="contactTitle">연락처</h2>
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">📧</div>
@@ -316,61 +308,32 @@
             </div>
 
             <div class="section">
-                <div data-lang="ko">
-                <h2>경력</h2>
+                <h2 data-i18n="experienceTitle">경력</h2>
                 <div class="experience-item">
                     <ul>
-                        2019.12-2025.06 프리렌서(일본)<br>
-                        2018.03-2019-11 Dropseed(일본)<br>
-                        2017.12-2018-03 Funcrew(일본)<br>
-                        2016.05-2017.11 Aiming(일본)<br>
+                        <li class="no-arrow" data-i18n="expFreelancer">2019.12-2025.06 프리랜서(일본)</li>
+                        <li class="no-arrow" data-i18n="expDropseed">2018.03-2019-11 Dropseed(일본)</li>
+                        <li class="no-arrow" data-i18n="expFuncrew">2017.12-2018-03 Funcrew(일본)</li>
+                        <li class="no-arrow" data-i18n="expAiming">2016.05-2017.11 Aiming(일본)</li>
                     </ul>
-                </div>
-                </div>
-                <div data-lang="ja">
-                <h2>職歴</h2>
-                <div class="experience-item">
-                    <ul>
-                        2019.12-2025.06 フリーランス<br>
-                        2018.03-2019-11 Dropseed<br>
-                        2017.12-2018-03 Funcrew<br>
-                        2016.05-2017.11 Aiming<br>
-                    </ul>
-                </div>
-
                 </div>
             </div>
 
             <div class="section">
-                <div data-lang="ko">
-                <h2>기술 스택</h2>
-                </div>
-                <div data-lang="ja">
-                    <h2>スキル</h2>
-                </div>
+                <h2 data-i18n="skillTitle">기술 스택</h2>
                 <div class="education-item">
                     <ul>
-                        C++, C#, HLSL, DirectX9/12, Python, Unreal Engine, Unity, gRPC, WebSocket, Jenkins,
+                        <li class="no-arrow">C++, C#, HLSL, DirectX9/12, Python, Unreal Engine, Unity, gRPC, WebSocket, Jenkins,</li>
                     </ul>
                 </div>
             </div>
 
             <div class="section">
-                <div data-lang="ko">
-                <h2>학력</h2>
-                </div>
-                <div data-lang="ja">
-                    <h2>学歴</h2>
-                </div>
+                <h2 data-i18n="educationTitle">학력</h2>
                 <div class="education-item">
                     <div class="item-header">
                         <div>
-                            <div data-lang="ko">
-                            <div class="item-title">일본공학원 하치오지 전문학교 학사</div>
-                            </div>
-                            <div data-lang="ja">
-                            <div class="item-title">日本工学院八王子専門学校</div>
-                            </div>
+                            <div class="item-title" data-i18n="eduSchool">일본공학원 하치오지 전문학교 학사</div>
                         </div>
                         <div class="item-period">2009.04 - 2016.03</div>
                     </div>
@@ -378,35 +341,28 @@
             </div>
 
             <div class="section">
-                <div data-lang="ko">
-                <h2>프로젝트</h2>
-                </div>
-                <div data-lang="ja">
-                <h2>プロジェクト</h2>
-                </div>
+                <h2 data-i18n="projectTitle">프로젝트</h2>
                 
                     <div class="project-item">
                         <div class="item-header">
                             <div>
-                                <div class="item-title">개인 프로젝트</div>
+                                <div class="item-title" data-i18n="projIkTitle">개인 프로젝트</div>
                             </div>
                         </div>
                         <ul>
-                            <li>Unity기반 IK</li>
+                            <li data-i18n="projIkDesc1">Unity기반 IK</li>
                             <li>
                             <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                                 <iframe src="https://www.youtube.com/embed/w6Tr8RQ340s?si=z5o34PEYQ2_qks3E" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                             </div>
                             </li>
-                            <li>
-                                핵심 기술<br>
-                                • Fabrik(Forward And Backward Reaching Inverse Kinematics)를 사용한 ik<br>
-                                • 효율적인 FABRIK 알고리즘 구현: Forward와 Backward pass를 통한 빠른 IK 계산<br>
-                                • 계층적 체인 구조: 복잡한 다중 체인 구조 지원<br>
-                                • 유연한 솔버 시스템: 커스텀 솔버 확장 가능<br>
-                                • 실시간 계산: LateUpdate에서 자동으로 IK 계산<br>
-                            </li>
-                            <li>소스코드 : <a href="https://github.com/kangyh04/IK">ik</a></li>
+                            <li data-i18n="projIkDesc2">핵심 기술</li>
+                            <li class="no-arrow" data-i18n="projIkCore1">• Fabrik(Forward And Backward Reaching Inverse Kinematics)를 사용한 ik</li>
+                            <li class="no-arrow" data-i18n="projIkCore2">• 효율적인 FABRIK 알고리즘 구현: Forward와 Backward pass를 통한 빠른 IK 계산</li>
+                            <li class="no-arrow" data-i18n="projIkCore3">• 계층적 체인 구조: 복잡한 다중 체인 구조 지원</li>
+                            <li class="no-arrow" data-i18n="projIkCore4">• 유연한 솔버 시스템: 커스텀 솔버 확장 가능</li>
+                            <li class="no-arrow" data-i18n="projIkCore5">• 실시간 계산: LateUpdate에서 자동으로 IK 계산</li>
+                            <li class="no-arrow" data-i18n="projIkSource">소스코드 : <a href="https://github.com/kangyh04/IK">ik</a></li>
                             <li>Unity6, C#</li>
                         </ul>
                     </div>
@@ -414,20 +370,18 @@
                     <div class="project-item">
                         <div class="item-header">
                             <div>
-                                <div class="item-title">개인 프로젝트</div>
+                                <div class="item-title" data-i18n="projQlTitle">개인 프로젝트</div>
                             </div>
                         </div>
                         <ul>
-                            <li>Q-Learning 알고리즘을 활용한 미로 찾기 AI </li>
-                            <li>
-                                핵심 기술<br>
-                                • Q-Learning 알고리즘: 강화학습 기반 경로 탐색<br>
-                                • 동적 미로 생성: Eller's Algorithm을 활용한 랜덤 미로 생성<br>
-                                • 실시간 학습 시각화: 학습 과정을 3D 환경에서 시각적으로 확인<br>
-                                • A 경로 찾기*: 최적 경로와의 비교를 위한 A* 알고리즘 구현<br>
-                                • 캐릭터 자동 이동: 학습된 Q-Table 기반 자동 네비게이션<br>
-                            </li>
-                            <li>소스코드 : <a href="https://github.com/kangyh04/Tracking">tracking</a></li>
+                            <li data-i18n="projQlDesc1">Q-Learning 알고리즘을 활용한 미로 찾기 AI </li>
+                            <li data-i18n="projQlDesc2">핵심 기술</li>
+                            <li class="no-arrow" data-i18n="projQlCore1">• Q-Learning 알고리즘: 강화학습 기반 경로 탐색</li>
+                            <li class="no-arrow" data-i18n="projQlCore2">• 동적 미로 생성: Eller's Algorithm을 활용한 랜덤 미로 생성</li>
+                            <li class="no-arrow" data-i18n="projQlCore3">• 실시간 학습 시각화: 학습 과정을 3D 환경에서 시각적으로 확인</li>
+                            <li class="no-arrow" data-i18n="projQlCore4">• A 경로 찾기*: 최적 경로와의 비교를 위한 A* 알고리즘 구현</li>
+                            <li class="no-arrow" data-i18n="projQlCore5">• 캐릭터 자동 이동: 학습된 Q-Table 기반 자동 네비게이션</li>
+                            <li class="no-arrow" data-i18n="projQlSource">소스코드 : <a href="https://github.com/kangyh04/Tracking">tracking</a></li>
                             <li>Unreal Engine5.6, Blueprint, Unreal C++</li>
                         </ul>
                     </div>
@@ -435,23 +389,21 @@
                     <div class="project-item">
                         <div class="item-header">
                             <div>
-                                <div class="item-title">개인 프로젝트</div>
+                                <div class="item-title" data-i18n="projGrassTitle">개인 프로젝트</div>
                             </div>
                         </div>
                         <ul>
-                            <li>GPU 기반 실시간 풀 애니메이션</li>
+                            <li data-i18n="projGrassDesc1">GPU 기반 실시간 풀 애니메이션</li>
                             <li>
                             <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                                 <iframe src="https://www.youtube.com/embed/3B_BhG7PLUI?si=1j9ZffxXODKRvpGY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                             </div>
                             </li>
-                            <li>
-                                핵심 기술<br>
-                                • DirectX 12 Compute Shader로 160개 풀잎 동시 계산<br>
-                                • 관성 모멘트 기반 사실적인 바람 반응<br>
-                                • Geometry Shader로 빌보드 동적 생성<br>
-                            </li>
-                            <li>소스코드 : <a href="https://github.com/kangyh04/grass">grass</a></li>
+                            <li data-i18n="projGrassDesc2">핵심 기술</li>
+                            <li class="no-arrow" data-i18n="projGrassCore1">• DirectX 12 Compute Shader로 160개 풀잎 동시 계산</li>
+                            <li class="no-arrow" data-i18n="projGrassCore2">• 관성 모멘트 기반 사실적인 바람 반응</li>
+                            <li class="no-arrow" data-i18n="projGrassCore3">• Geometry Shader로 빌보드 동적 생성</li>
+                            <li data-i18n="projGrassSource">소스코드 : <a href="https://github.com/kangyh04/grass">grass</a></li>
                             <li>DX12, C++, Hlsl</li>
                         </ul>
                     </div>
@@ -459,22 +411,20 @@
                     <div class="project-item">
                     <div class="item-header">
                         <div>
-                            <div class="item-title">개인 프로젝트</div>
+                            <div class="item-title" data-i18n="projReflTitle">개인 프로젝트</div>
                         </div>
                     </div>
                     <ul>
-                        <li>실시간 환경 반사 렌더링</li>
+                        <li data-i18n="projReflDesc1">실시간 환경 반사 렌더링</li>
                         <li>
                         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                             <iframe src="https://www.youtube.com/embed/fL2OVwk2uRQ?si=gGL1EhrJD3FjBheY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                         </div>
                         </li>
-                        <li>
-                            핵심 기술<br>
-                            • 6방향 큐브맵 실시간 렌더링<br>
-                            • 가운데 금속 물체 기준 6방향 큐브맵을 동적 생성후 실시간 렌더링<br>
-                            • 시간 기반 동적 스카이박스<br>
-                        </li>
+                        <li data-i18n="projReflDesc2">핵심 기술</li>
+                        <li class="no-arrow" data-i18n="projReflCore1">• 6방향 큐브맵 실시간 렌더링</li>
+                        <li class="no-arrow" data-i18n="projReflCore2">• 가운데 금속 물체 기준 6방향 큐브맵을 동적 생성후 실시간 렌더링</li>
+                        <li class="no-arrow" data-i18n="projReflCore3">• 시간 기반 동적 스카이박스</li>
                         <li>DirectX12, C++</li>
                     </ul>
                 </div>
@@ -482,29 +432,27 @@
                 <div class="project-item">
                     <div class="item-header">
                         <div>
-                            <div class="item-title">Offima - 인테리어 3D 시뮬레이션 앱(일본)</div>
+                            <div class="item-title" data-i18n="projOffimaTitle">Offima - 인테리어 3D 시뮬레이션 앱(일본)</div>
                             <div class="item-company">Thrid Wave</div>
                         </div>
                     </div>
                     <ul>
-                        <li>언리얼4 기반 PC용 인테리어 프로그램</li>
+                        <li data-i18n="projOffimaDesc1">언리얼4 기반 PC용 인테리어 프로그램</li>
                         <li>
                         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                             <iframe src="https://www.youtube.com/embed/51zqNpP29mc?si=MDXVeTGTOOw1bQ_Z" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                         </div>
                         </li>
-                        <li>
-                            담당 업무<br>
-                            • 런타임 FBX 처리 시스템 설계 및 구현 (C++)<br>
-                              - Unreal 미지원 기능을 자체 개발<br>
-                              - Import/Export 파이프라인 구축<br>
-                            • 2D -> 3D 자동 변환 시스템<br>
-                              - 평면 도면에서 3D 건물 모델 자동 생성<br>
-                              - 실시간 프리뷰 및 수정 기능<br>
-                            • DevOps 자동화<br>
-                              - Jenkins 기반 빌드/배포 자동화<br>
-                              - Slack 통합 알림 시스템<br>
-                        </li>
+                        <li data-i18n="projOffimaTaskTitle">담당 업무</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask1">• 런타임 FBX 처리 시스템 설계 및 구현 (C++)</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask1Sub1"> - Unreal 미지원 기능을 자체 개발</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask1Sub2"> - Import/Export 파이프라인 구축</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask2">• 2D -> 3D 자동 변환 시스템</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask2Sub1"> - 평면 도면에서 3D 건물 모델 자동 생성</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask2Sub2"> - 실시간 프리뷰 및 수정 기능</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask3">• DevOps 자동화</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask3Sub1"> - Jenkins 기반 빌드/배포 자동화</li>
+                        <li class="no-arrow" data-i18n="projOffimaTask3Sub2"> - Slack 통합 알림 시스템</li>
                         <li>Unreal Engine4(C++, BluePrint), Jenkins, FBX, Python</li>
                     </ul>
                 </div>
@@ -512,34 +460,28 @@
                 <div class="project-item">
                     <div class="item-header">
                         <div>
-                            <div class="item-title">B-Project - 모바일 리듬 게임(일본)</div>
+                            <div class="item-title" data-i18n="projBprojectTitle">B-Project - 모바일 리듬 게임(일본)</div>
                             <div class="item-company">Mages Lab</div>
                         </div>
                     </div>
                     <ul>
-                        <li>유니티 기반 모바일 음악 게임</li>
+                        <li data-i18n="projBprojectDesc1">유니티 기반 모바일 음악 게임</li>
                         <li>
                         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-                            <iframe src="https://www.youtube.com/embed/xRfRs8EhL2A?si=pTIxusnwrH-w_oGW" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+                            <iframe src="https://www.youtube.com/embed/xRfRs8EhL2A?si=pTIxusnwr-w_oGW" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                         </div>
                         </li>
-                        <li>
-                            담당 업무<br>
-                                • 악보 에디터 툴 개발<br>
-                                  - 기획자가 직접 사용 가능한 비주얼 에디터<br>
-                                  - 실시간 프리뷰 및 플레이 테스트 기능<br>
-                                  
-                                • CriWare 미들웨어 커스터마이징<br>
-                                  - 지원되지 않는 이펙트 기능 추가<br>
-                                
-                                • OutGame 시스템 전체 설계<br>
-                                  - 캐릭터 호감도 시스템<br>
-                                  - 음악 선택 화면 UI/UX<br>
-                        </li>
-                        <li>
-                            성과<br>
-                                • 악보 제작 시간 50%이상 단축(기존 버튼기반 작업 후 앱 디버그 플레이 -> 툴 상에서 제작 및 테스트 플레이)<br>
-                        </li>
+                        <li data-i18n="projBprojectTaskTitle">담당 업무</li>
+                        <li class="no-arrow" data-i18n="projBprojectTask1">• 악보 에디터 툴 개발</li>
+                        <li class="no-arrow" data-i18n="projBprojectTask1Sub1"> - 기획자가 직접 사용 가능한 비주얼 에디터</li>
+                        <li class="no-arrow" data-i18n="projBprojectTask1Sub2"> - 실시간 프리뷰 및 플레이 테스트 기능</li>
+                        <li class="no-arrow" data-i18n="projBprojectTask2">• CriWare 미들웨어 커스터마이징</li>
+                        <li class="no-arrow" data-i18n="projBprojectTask2Sub1"> - 지원되지 않는 이펙트 기능 추가</li>
+                        <li class="no-arrow" data-i18n="projBprojectTask3">• OutGame 시스템 전체 설계</li>
+                        <li class="no-arrow" data-i18n="projBprojectTask3Sub1"> - 캐릭터 호감도 시스템</li>
+                        <li class="no-arrow" data-i18n="projBprojectTask3Sub2"> - 음악 선택 화면 UI/UX</li>
+                        <li class="no-arrow" data-i18n="projBprojectResultTitle">성과</li>
+                        <li class="no-arrow" data-i18n="projBprojectResult1">• 악보 제작 시간 50%이상 단축(기존 버튼기반 작업 후 앱 디버그 플레이 -> 툴 상에서 제작 및 테스트 플레이)</li>
                         <li>Unity(C#, HLSL), CriWare, nGui</li>
                     </ul>
                 </div>
@@ -547,34 +489,28 @@
                 <div class="project-item">
                     <div class="item-header">
                         <div>
-                            <div class="item-title">게슈탈트오딘 - 3D MORPG(일본)</div>
+                            <div class="item-title" data-i18n="projOdinTitle">게슈탈트오딘 - 3D MORPG(일본)</div>
                             <div class="item-company">Aiming</div>
                         </div>
                     </div>
                     <ul>
-                        <li>유니티 기반 모바일 3D MO RPG</li>
+                        <li data-i18n="projOdinDesc1">유니티 기반 모바일 3D MO RPG</li>
                         <li>
                         <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                             <iframe src="https://www.youtube.com/embed/0by-wL74D8g?si=cPNRERJBnZS9lrx-" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
                         </div>
                         </li>
-                        <li>건물과 절벽등 런타임으로 그림자를 계산할필요가 없는 부분의 그림자 처리를 위한 쉐도우맵 베이크 툴<br>
-                            게임 전체에서 쓰일 기본 UI시스템<br>
-                            Auto Play시 에리어전체를 이동할 Graph를 이용한 경로탐색
-                            담당 업무<br>
-                                • Shadow Baking Tool 개발<br>
-                                  - 정적 오브젝트용 쉐도우맵 사전 생성 툴<br>
-                                  - 런타임 연산 제거로 모바일 성능 최적화<br>
-                                  - 아티스트 친화적인 Unity Editor 확장<br>
-                                
-                                • UI 프레임워크 설계<br>
-                                  - NGUI 기반 재사용 가능한 컴포넌트 시스템<br>
-                                  - 게임 전체에서 일관된 UI/UX 제공<br>
-                                
-                                • 네비게이션 시스템<br>
-                                  - 다익스트라 알고리즘 기반 경로 탐색<br>
-                                  - Auto Play 기능 구현<br>
-                        </li>
+                        <li data-i18n="projOdinTaskTitle">담당 업무</li>
+                        <li class="no-arrow" data-i18n="projOdinTask1">• Shadow Baking Tool 개발</li>
+                        <li class="no-arrow" data-i18n="projOdinTask1Sub1"> - 정적 오브젝트용 쉐도우맵 사전 생성 툴</li>
+                        <li class="no-arrow" data-i18n="projOdinTask1Sub2"> - 런타임 연산 제거로 모바일 성능 최적화</li>
+                        <li class="no-arrow" data-i18n="projOdinTask1Sub3"> - 아티스트 친화적인 Unity Editor 확장</li>
+                        <li class="no-arrow" data-i18n="projOdinTask2">• UI 프레임워크 설계</li>
+                        <li class="no-arrow" data-i18n="projOdinTask2Sub1"> - NGUI 기반 재사용 가능한 컴포넌트 시스템</li>
+                        <li class="no-arrow" data-i18n="projOdinTask2Sub2"> - 게임 전체에서 일관된 UI/UX 제공</li>
+                        <li class="no-arrow" data-i18n="projOdinTask3">• 네비게이션 시스템</li>
+                        <li class="no-arrow" data-i18n="projOdinTask3Sub1"> - 다익스트라 알고리즘 기반 경로 탐색</li>
+                        <li class="no-arrow" data-i18n="projOdinTask3Sub2"> - Auto Play 기능 구현</li>
                         <li>Unity(C#, HLSL), nGui, Dijkstra Algorithm</li>
                     </ul>
                 </div>
@@ -583,6 +519,330 @@
     </div>
 
     <script>
+        // --- i18n 번역 데이터 ---
+        const translations = {
+            'ko': {
+                'pageTitle': '강영휘(Younghui Khang) - 이력서',
+                'name': '강영휘',
+                'contactTitle': '연락처',
+                'experienceTitle': '경력',
+                'expFreelancer': '2019.12-2025.06 프리랜서(일본)',
+                'expDropseed': '2018.03-2019-11 Dropseed(일본)',
+                'expFuncrew': '2017.12-2018-03 Funcrew(일본)',
+                'expAiming': '2016.05-2017.11 Aiming(일본)',
+                'skillTitle': '기술 스택',
+                'educationTitle': '학력',
+                'eduSchool': '일본공학원 하치오지 전문학교 학사',
+                'projectTitle': '프로젝트',
+                // IK Project
+                'projIkTitle': '개인 프로젝트',
+                'projIkDesc1': 'Unity기반 IK',
+                'projIkDesc2': '핵심 기술',
+                'projIkCore1': '• Fabrik(Forward And Backward Reaching Inverse Kinematics)를 사용한 ik',
+                'projIkCore2': '• 효율적인 FABRIK 알고리즘 구현: Forward와 Backward pass를 통한 빠른 IK 계산',
+                'projIkCore3': '• 계층적 체인 구조: 복잡한 다중 체인 구조 지원',
+                'projIkCore4': '• 유연한 솔버 시스템: 커스텀 솔버 확장 가능',
+                'projIkCore5': '• 실시간 계산: LateUpdate에서 자동으로 IK 계산',
+                'projIkSource': '소스코드 :',
+                // Q-Learning Project
+                'projQlTitle': '개인 프로젝트',
+                'projQlDesc1': 'Q-Learning 알고리즘을 활용한 미로 찾기 AI',
+                'projQlDesc2': '핵심 기술',
+                'projQlCore1': '• Q-Learning 알고리즘: 강화학습 기반 경로 탐색',
+                'projQlCore2': '• 동적 미로 생성: Eller\'s Algorithm을 활용한 랜덤 미로 생성',
+                'projQlCore3': '• 실시간 학습 시각화: 학습 과정을 3D 환경에서 시각적으로 확인',
+                'projQlCore4': '• A 경로 찾기*: 최적 경로와의 비교를 위한 A* 알고리즘 구현',
+                'projQlCore5': '• 캐릭터 자동 이동: 학습된 Q-Table 기반 자동 네비게이션',
+                'projQlSource': '소스코드 :',
+                // Grass Project
+                'projGrassTitle': '개인 프로젝트',
+                'projGrassDesc1': 'GPU 기반 실시간 풀 애니메이션',
+                'projGrassDesc2': '핵심 기술',
+                'projGrassCore1': '• DirectX 12 Compute Shader로 160개 풀잎 동시 계산',
+                'projGrassCore2': '• 관성 모멘트 기반 사실적인 바람 반응',
+                'projGrassCore3': '• Geometry Shader로 빌보드 동적 생성',
+                'projGrassSource': '소스코드 :',
+                // Reflection Project
+                'projReflTitle': '개인 프로젝트',
+                'projReflDesc1': '실시간 환경 반사 렌더링',
+                'projReflDesc2': '핵심 기술',
+                'projReflCore1': '• 6방향 큐브맵 실시간 렌더링',
+                'projReflCore2': '• 가운데 금속 물체 기준 6방향 큐브맵을 동적 생성후 실시간 렌더링',
+                'projReflCore3': '• 시간 기반 동적 스카이박스',
+                // Offima Project
+                'projOffimaTitle': 'Offima - 인테리어 3D 시뮬레이션 앱(일본)',
+                'projOffimaDesc1': '언리얼4 기반 PC용 인테리어 프로그램',
+                'projOffimaTaskTitle': '담당 업무',
+                'projOffimaTask1': '• 런타임 FBX 처리 시스템 설계 및 구현 (C++)',
+                'projOffimaTask1Sub1': ' - Unreal 미지원 기능을 자체 개발',
+                'projOffimaTask1Sub2': ' - Import/Export 파이프라인 구축',
+                'projOffimaTask2': '• 2D -> 3D 자동 변환 시스템',
+                'projOffimaTask2Sub1': ' - 평면 도면에서 3D 건물 모델 자동 생성',
+                'projOffimaTask2Sub2': ' - 실시간 프리뷰 및 수정 기능',
+                'projOffimaTask3': '• DevOps 자동화',
+                'projOffimaTask3Sub1': ' - Jenkins 기반 빌드/배포 자동화',
+                'projOffimaTask3Sub2': ' - Slack 통합 알림 시스템',
+                // B-Project
+                'projBprojectTitle': 'B-Project - 모바일 리듬 게임(일본)',
+                'projBprojectDesc1': '유니티 기반 모바일 음악 게임',
+                'projBprojectTaskTitle': '담당 업무',
+                'projBprojectTask1': '• 악보 에디터 툴 개발',
+                'projBprojectTask1Sub1': ' - 기획자가 직접 사용 가능한 비주얼 에디터',
+                'projBprojectTask1Sub2': ' - 실시간 프리뷰 및 플레이 테스트 기능',
+                'projBprojectTask2': '• CriWare 미들웨어 커스터마이징',
+                'projBprojectTask2Sub1': ' - 지원되지 않는 이펙트 기능 추가',
+                'projBprojectTask3': '• OutGame 시스템 전체 설계',
+                'projBprojectTask3Sub1': ' - 캐릭터 호감도 시스템',
+                'projBprojectTask3Sub2': ' - 음악 선택 화면 UI/UX',
+                'projBprojectResultTitle': '성과',
+                'projBprojectResult1': '• 악보 제작 시간 50%이상 단축(기존 버튼기반 작업 후 앱 디버그 플레이 -> 툴 상에서 제작 및 테스트 플레이)',
+                // Gestalt Odin
+                'projOdinTitle': '게슈탈트오딘 - 3D MORPG(일본)',
+                'projOdinDesc1': '유니티 기반 모바일 3D MO RPG',
+                'projOdinTaskTitle': '담당 업무',
+                'projOdinTask1': '• Shadow Baking Tool 개발',
+                'projOdinTask1Sub1': ' - 정적 오브젝트용 쉐도우맵 사전 생성 툴',
+                'projOdinTask1Sub2': ' - 런타임 연산 제거로 모바일 성능 최적화',
+                'projOdinTask1Sub3': ' - 아티스트 친화적인 Unity Editor 확장',
+                'projOdinTask2': '• UI 프레임워크 설계',
+                'projOdinTask2Sub1': ' - NGUI 기반 재사용 가능한 컴포넌트 시스템',
+                'projOdinTask2Sub2': ' - 게임 전체에서 일관된 UI/UX 제공',
+                'projOdinTask3': '• 네비게이션 시스템',
+                'projOdinTask3Sub1': ' - 다익스트라 알고리즘 기반 경로 탐색',
+                'projOdinTask3Sub2': ' - Auto Play 기능 구현',
+            },
+            'ja': {
+                'pageTitle': 'カンヨンフィ(Younghui Khang) - 履歴書',
+                'name': 'カンヨンフィ',
+                'contactTitle': '個人リンク',
+                'experienceTitle': '職歴',
+                'expFreelancer': '2019.12-2025.06 フリーランス',
+                'expDropseed': '2018.03-2019-11 Dropseed',
+                'expFuncrew': '2017.12-2018-03 Funcrew',
+                'expAiming': '2016.05-2017.11 Aiming',
+                'skillTitle': 'スキル',
+                'educationTitle': '学歴',
+                'eduSchool': '日本工学院八王子専門学校',
+                'projectTitle': 'プロジェクト',
+                // IK Project
+                'projIkTitle': '個人プロジェクト',
+                'projIkDesc1': 'UnityベースのIK',
+                'projIkDesc2': 'コア技術',
+                'projIkCore1': '• Fabrik (Forward And Backward Reaching Inverse Kinematics) を使用したIK',
+                'projIkCore2': '• 効率的なFABRIKアルゴリズム実装: ForwardとBackwardパスによる迅速なIK計算',
+                'projIkCore3': '• 階層的チェーン構造: 複雑なマルチチェーン構造をサポート',
+                'projIkCore4': '• 柔軟なソルバーシステム: カスタムソルバーの拡張が可能',
+                'projIkCore5': '• リアルタイム計算: LateUpdateで自動的にIKを計算',
+                'projIkSource': 'ソースコード :',
+                // Q-Learning Project
+                'projQlTitle': '個人プロジェクト',
+                'projQlDesc1': 'Q-Learningアルゴリズムを活用した迷路探索AI',
+                'projQlDesc2': 'コア技術',
+                'projQlCore1': '• Q-Learningアルゴリズム: 強化学習ベースの経路探索',
+                'projQlCore2': '• 動的迷路生成: Eller\'s Algorithmを活用したランダム迷路生成',
+                'projQlCore3': '• リアルタイム学習可視化: 学習プロセスを3D環境で視覚的に確認',
+                'projQlCore4': '• A*経路探索: 最適経路との比較のためのA*アルゴリズム実装',
+                'projQlCore5': '• キャラクター自動移動: 学習されたQ-Tableベースの自動ナビゲーション',
+                'projQlSource': 'ソースコード :',
+                // Grass Project
+                'projGrassTitle': '個人プロジェクト',
+                'projGrassDesc1': 'GPUベースのリアルタイム草アニメーション',
+                'projGrassDesc2': 'コア技術',
+                'projGrassCore1': '• DirectX 12 Compute Shaderで160枚の草の葉を同時計算',
+                'projGrassCore2': '• 慣性モーメントに基づいたリアルな風の反応',
+                'projGrassCore3': '• Geometry Shaderでビルボードを動的生成',
+                'projGrassSource': 'ソースコード :',
+                // Reflection Project
+                'projReflTitle': '個人プロジェクト',
+                'projReflDesc1': 'リアルタイム環境反射レンダリング',
+                'projReflDesc2': 'コア技術',
+                'projReflCore1': '• 6方向キューブマップのリアルタイムレンダリング',
+                'projReflCore2': '• 中央の金属オブジェクト基準で6方向キューブマップを動的生成しリアルタイムレンダリング',
+                'projReflCore3': '• 時間ベースの動的スカイボックス',
+                // Offima Project
+                'projOffimaTitle': 'Offima - インテリア3Dシミュレーションアプリ',
+                'projOffimaDesc1': 'Unreal Engine 4ベースのPC用インテリアプログラム',
+                'projOffimaTaskTitle': '担当業務',
+                'projOffimaTask1': '• ランタイムFBX処理システムの設計と実装 (C++)',
+                'projOffimaTask1Sub1': ' - Unreal非対応機能を自社開発',
+                'projOffimaTask1Sub2': ' - Import/Exportパイプラインの構築',
+                'projOffimaTask2': '• 2D -> 3D自動変換システム',
+                'projOffimaTask2Sub1': ' - 平面図から3D建物モデルを自動生成',
+                'projOffimaTask2Sub2': ' - リアルタイムプレビューおよび修正機能',
+                'projOffimaTask3': '• DevOps自動化',
+                'projOffimaTask3Sub1': ' - Jenkinsベースのビルド/デプロイ自動化',
+                'projOffimaTask3Sub2': ' - Slack統合通知システム',
+                // B-Project
+                'projBprojectTitle': 'B-Project - モバイルリズムゲーム',
+                'projBprojectDesc1': 'Unityベースのモバイル音楽ゲーム',
+                'projBprojectTaskTitle': '担当業務',
+                'projBprojectTask1': '• 楽譜エディターツールの開発',
+                'projBprojectTask1Sub1': ' - 企画者が直接使用できるビジュアルエディター',
+                'projBprojectTask1Sub2': ' - リアルタイムプレビューとプレイテスト機能',
+                'projBprojectTask2': '• CriWareミドルウェアのカスタマイズ',
+                'projBprojectTask2Sub1': ' - 非サポートエフェクト機能の追加',
+                'projBprojectTask3': '• OutGameシステム全体の設計',
+                'projBprojectTask3Sub1': ' - キャラクター好感度システム',
+                'projBprojectTask3Sub2': ' - 音楽選択画面UI/UX',
+                'projBprojectResultTitle': '成果',
+                'projBprojectResult1': '• 楽譜制作時間を50%以上短縮 (既存のボタンベース作業後のアプリデバッグプレイ → ツール上での制作とテストプレイ)',
+                // Gestalt Odin
+                'projOdinTitle': 'ゲシュタルト・オーディン - 3D MORPG',
+                'projOdinDesc1': 'Unityベースのモバイル3D MO RPG',
+                'projOdinTaskTitle': '担当業務',
+                'projOdinTask1': '• Shadow Baking Toolの開発',
+                'projOdinTask1Sub1': ' - 静的オブジェクト用のシャドウマップ事前生成ツール',
+                'projOdinTask1Sub2': ' - ランタイム演算を除去しモバイル性能を最適化',
+                'projOdinTask1Sub3': ' - アーティストフレンドリーなUnity Editor拡張',
+                'projOdinTask2': '• UIフレームワークの設計',
+                'projOdinTask2Sub1': ' - NGUIベースの再利用可能なコンポーネントシステム',
+                'projOdinTask2Sub2': ' - ゲーム全体で一貫したUI/UXを提供',
+                'projOdinTask3': '• ナビゲーションシステム',
+                'projOdinTask3Sub1': ' - ダイクストラアルゴリズムベースの経路探索',
+                'projOdinTask3Sub2': ' - Auto Play機能の実装',
+            },
+            'en': {
+                'pageTitle': 'Younghui Khang - Resume',
+                'name': 'Younghui Khang',
+                'contactTitle': 'Contact',
+                'experienceTitle': 'Experience',
+                'expFreelancer': '2019.12-2025.06 Freelancer (Japan)',
+                'expDropseed': '2018.03-2019-11 Dropseed (Japan)',
+                'expFuncrew': '2017.12-2018-03 Funcrew (Japan)',
+                'expAiming': '2016.05-2017.11 Aiming (Japan)',
+                'skillTitle': 'Tech Stacks',
+                'educationTitle': 'Education',
+                'eduSchool': 'Nippon Engineering College Hachioji, Bachelor\'s Degree',
+                'projectTitle': 'Projects',
+                // IK Project
+                'projIkTitle': 'Personal Project',
+                'projIkDesc1': 'Unity-based IK (Inverse Kinematics)',
+                'projIkDesc2': 'Key Technologies',
+                'projIkCore1': '• Implemented IK using FABRIK (Forward And Backward Reaching Inverse Kinematics)',
+                'projIkCore2': '• Efficient FABRIK algorithm: Fast IK calculation with Forward and Backward passes',
+                'projIkCore3': '• Hierarchical chain structure: Supports complex multi-chain systems',
+                'projIkCore4': '• Flexible solver system: Extensible with custom solvers',
+                'projIkCore5': '• Real-time calculation: Automatic IK calculation in LateUpdate',
+                'projIkSource': 'Source Code :',
+                // Q-Learning Project
+                'projQlTitle': 'Personal Project',
+                'projQlDesc1': 'Maze Finding AI using Q-Learning Algorithm',
+                'projQlDesc2': 'Key Technologies',
+                'projQlCore1': '• Q-Learning algorithm: Reinforcement learning-based pathfinding',
+                'projQlCore2': '• Dynamic Maze Generation: Random maze creation using Eller\'s Algorithm',
+                'projQlCore3': '• Real-time learning visualization: Visual confirmation of the learning process in a 3D environment',
+                'projQlCore4': '• A* Pathfinding: Implementation of A* algorithm for comparison with the optimal path',
+                'projQlCore5': '• Character Auto-Movement: Automatic navigation based on the learned Q-Table',
+                'projQlSource': 'Source Code :',
+                // Grass Project
+                'projGrassTitle': 'Personal Project',
+                'projGrassDesc1': 'GPU-based Real-time Grass Animation',
+                'projGrassDesc2': 'Key Technologies',
+                'projGrassCore1': '• Simultaneous calculation of 160 grass blades using DirectX 12 Compute Shader',
+                'projGrassCore2': '• Realistic wind reaction based on Moment of Inertia',
+                'projGrassCore3': '• Dynamic Billboard generation using Geometry Shader',
+                'projGrassSource': 'Source Code :',
+                // Reflection Project
+                'projReflTitle': 'Personal Project',
+                'projReflDesc1': 'Real-time Environment Reflection Rendering',
+                'projReflDesc2': 'Key Technologies',
+                'projReflCore1': '• Real-time rendering of 6-directional cubemaps',
+                'projReflCore2': '• Dynamic generation and real-time rendering of 6-directional cubemaps based on the central metal object',
+                'projReflCore3': '• Time-based dynamic skybox',
+                // Offima Project
+                'projOffimaTitle': 'Offima - Interior 3D Simulation App (Japan)',
+                'projOffimaDesc1': 'Unreal Engine 4-based PC interior program',
+                'projOffimaTaskTitle': 'Responsibilities',
+                'projOffimaTask1': '• Design and implementation of Runtime FBX Processing System (C++)',
+                'projOffimaTask1Sub1': ' - Self-developed features unsupported by Unreal',
+                'projOffimaTask1Sub2': ' - Established Import/Export pipeline',
+                'projOffimaTask2': '• 2D -> 3D Automatic Conversion System',
+                'projOffimaTask2Sub1': ' - Automated 3D building model generation from floor plans',
+                'projOffimaTask2Sub2': ' - Real-time preview and editing features',
+                'projOffimaTask3': '• DevOps Automation',
+                'projOffimaTask3Sub1': ' - Jenkins-based build/deployment automation',
+                'projOffimaTask3Sub2': ' - Slack integration notification system',
+                // B-Project
+                'projBprojectTitle': 'B-Project - Mobile Rhythm Game (Japan)',
+                'projBprojectDesc1': 'Unity-based mobile music game',
+                'projBprojectTaskTitle': 'Responsibilities',
+                'projBprojectTask1': '• Development of Score Editor Tool',
+                'projBprojectTask1Sub1': ' - Visual editor usable directly by planners',
+                'projBprojectTask1Sub2': ' - Real-time preview and play testing features',
+                'projBprojectTask2': '• Customization of CriWare Middleware',
+                'projBprojectTask2Sub1': ' - Added unsupported effect features',
+                'projBprojectTask3': '• Overall Design of OutGame System',
+                'projBprojectTask3Sub1': ' - Character Affection system',
+                'projBprojectTask3Sub2': ' - Music selection screen UI/UX',
+                'projBprojectResultTitle': 'Achievements',
+                'projBprojectResult1': '• Score creation time reduced by over 50% (from button-based work then app debug play -> to creation and test play within the tool)',
+                // Gestalt Odin
+                'projOdinTitle': 'Gestalt Odin - 3D MORPG (Japan)',
+                'projOdinDesc1': 'Unity-based mobile 3D MO RPG',
+                'projOdinTaskTitle': 'Responsibilities',
+                'projOdinTask1': '• Shadow Baking Tool Development',
+                'projOdinTask1Sub1': ' - Pre-generation tool for static object shadow maps',
+                'projOdinTask1Sub2': ' - Optimized mobile performance by removing runtime calculations',
+                'projOdinTask1Sub3': ' - Artist-friendly Unity Editor extension',
+                'projOdinTask2': '• UI Framework Design',
+                'projOdinTask2Sub1': ' - NGUI-based reusable component system',
+                'projOdinTask2Sub2': ' - Provided consistent UI/UX across the entire game',
+                'projOdinTask3': '• Navigation System',
+                'projOdinTask3Sub1': ' - Pathfinding based on Dijkstra\'s algorithm',
+                'projOdinTask3Sub2': ' - Implemented Auto Play feature',
+            }
+        };
+
+        const languageSelect = document.getElementById('languageSelect');
+
+        function loadTranslations(lang) {
+            const currentTranslations = translations[lang];
+            if (!currentTranslations) return;
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (currentTranslations[key]) {
+                    // Check if the element is an <a> tag inside a <li> to only change text, not the entire link structure
+                    if (element.tagName === 'LI' && element.querySelector('a')) {
+                         // For <li> containing <a>, only change the text node content, if possible.
+                         // Given the current structure, let's assume the key includes the full text needed.
+                         // For 'projIkSource' which contains a link, we need special handling if we want to preserve the inner HTML structure (e.g., the <a> tag).
+                         if (key.endsWith('Source') && element.children.length === 1 && element.children[0].tagName === 'A') {
+                            element.innerHTML = `${currentTranslations[key]} : <a href="${element.children[0].href}">${element.children[0].textContent}</a>`;
+                         } else if (key.endsWith('Source') && element.querySelector('a')) {
+                            // Example: <li>소스코드 : <a href="...">...</a></li>
+                            const link = element.querySelector('a');
+                            if (link) {
+                                element.childNodes[0].nodeValue = currentTranslations[key] + ' : '; // Only update the text before the link
+                            }
+                         } else {
+                            element.textContent = currentTranslations[key];
+                         }
+                    } else if (element.tagName === 'TITLE') {
+                        document.title = currentTranslations[key];
+                    } else {
+                        element.textContent = currentTranslations[key];
+                    }
+                }
+            });
+
+            document.body.lang = lang; // Set the main language attribute
+            document.documentElement.lang = lang; // Set the HTML language attribute
+        }
+
+        function changeLanguage(lang) {
+            loadTranslations(lang);
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Attach event listener to the select element
+        languageSelect.addEventListener('change', (event) => {
+            changeLanguage(event.target.value);
+        });
+
+        // --- 기존 스크립트 로직 ---
+
         // 부드러운 스크롤 애니메이션
         const observerOptions = {
             threshold: 0.1,
@@ -626,20 +886,15 @@
             });
         });
 
-        function changeLanguage(lang) {
-            document.body.setAttribute('data-active-lang', lang);
-            localStorage.setItem('preferredLanguage', lang);
-
-            document.documentElement.lang = lang;
-        }
-
+        // 페이지 로드 시 저장된 언어 불러오기 및 적용
         window.addEventListener('DOMContentLoaded', ()=>{
+            const defaultLang = 'ko'; // 기본 언어 설정
             const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang){
-                document.getElementById('languageSelect').value = savedLang;
-                changeLanguage(savedLang);
-            }
-        })
+            const initialLang = savedLang || defaultLang;
+
+            languageSelect.value = initialLang; // 드롭다운 값 설정
+            loadTranslations(initialLang); // 번역 로드
+        });
     </script>
 </body>
 </html>
