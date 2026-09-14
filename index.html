@@ -426,6 +426,29 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
 
     <h3 class="sub-divider reveal" data-i18n="sub_commercial">상용 프로젝트 — 툴 · 파이프라인 실적</h3>
 
+    <!-- Heroes Snap -->
+    <div class="proj flip reveal">
+      <div class="media">
+        <div class="video" style="padding-bottom:0;height:auto;position:static">
+          <div style="border-radius:24px;overflow:hidden;background:#0a0a0a;padding:48px;text-align:center">
+            <div style="font-size:64px;font-weight:400;letter-spacing:-.04em;color:#4a9eff">143→65</div>
+            <div style="font-size:13px;font-weight:600;letter-spacing:.35px;text-transform:uppercase;color:#9a9a9a;margin-top:8px" data-i18n="p_pa_visual">WebGL 부팅 메모리 (MB)</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="meta-label" data-i18n="p_pa_meta">디벨로켓 (한국) · 2026–현재</span>
+        <h3 data-i18n="p_pa_title">히어로즈스냅 — 모바일 수집형 RPG</h3>
+        <div class="tags">Unity · WebGL · C# · C# Server · EF Core · R3 / UniTask</div>
+        <ul class="points">
+          <li data-i18n="p_pa_b1"><strong>마스터 데이터 코드젠 파이프라인 구축</strong> — 기획 CSV → 서버·클라 타입/DTO 자동 생성으로 <em>수기 작업 제거</em></li>
+          <li data-i18n="p_pa_b2"><strong>WebGL 부팅 메모리 최적화</strong> — wasm·리소스 정리로 <em>143MB → 65MB</em>, 초기 로딩 재시작 해결</li>
+          <li data-i18n="p_pa_b3"><strong>Reactive MVVM UI 아키텍처</strong> — R3 · UniTask 기반 Controller/View/ViewModel 분리 + 재사용 공통 컴포넌트</li>
+          <li data-i18n="p_pa_b4">외부 플랫폼(미니앱) 연동 — 클라이언트·서버 대칭 인터페이스 추상화로 SDK 교체 대응</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- Offima -->
     <div class="proj reveal">
       <div class="media">
@@ -855,6 +878,11 @@ ko: {
   p_kib_b4:'Skinned Mesh · 본 애니메이션 시스템 직접 구현',
   sub_commercial:'상용 프로젝트 — 툴 · 파이프라인 실적',
   sub_personal:'개인 프로젝트 — 렌더링 · 엔진 확장',
+  p_pa_meta:'디벨로켓 (한국) · 2026–현재', p_pa_title:'히어로즈스냅 — 모바일 수집형 RPG', p_pa_visual:'WebGL 부팅 메모리 (MB)',
+  p_pa_b1:'<strong>마스터 데이터 코드젠 파이프라인 구축</strong> — 기획 CSV → 서버·클라 타입/DTO 자동 생성으로 <em>수기 작업 제거</em>',
+  p_pa_b2:'<strong>WebGL 부팅 메모리 최적화</strong> — wasm·리소스 정리로 <em>143MB → 65MB</em>, 초기 로딩 재시작 해결',
+  p_pa_b3:'<strong>Reactive MVVM UI 아키텍처</strong> — R3 · UniTask 기반 Controller/View/ViewModel 분리 + 재사용 공통 컴포넌트',
+  p_pa_b4:'외부 플랫폼(미니앱) 연동 — 클라이언트·서버 대칭 인터페이스 추상화로 SDK 교체 대응',
   p_off_meta:'Third Wave (일본) · 프리랜서 · 2019–2020', p_off_title:'Offima — 인테리어 3D 시뮬레이션',
   p_off_b1:'<strong>런타임 FBX Import/Export 자체 개발</strong> — UE4 미지원 기능 구현',
   p_off_b2:'<strong>2D 도면 → 3D 자동 변환</strong> 파이프라인 (작업 시간 약 <em>30% 단축</em>)',
@@ -961,6 +989,11 @@ en: {
   p_kib_b4:'Skinned mesh and bone animation systems implemented directly',
   sub_commercial:'Commercial — Tools &amp; Pipeline',
   sub_personal:'Personal — Rendering &amp; Engine Expansion',
+  p_pa_meta:'Develrocket (Korea) · 2026–present', p_pa_title:'Heroes Snap — Mobile Collectible RPG', p_pa_visual:'WebGL boot memory (MB)',
+  p_pa_b1:'<strong>Built a master-data code-gen pipeline</strong> — planner CSV → auto-generated server/client types &amp; DTOs, <em>eliminating manual work</em>',
+  p_pa_b2:'<strong>WebGL boot-memory optimization</strong> — wasm &amp; resource cleanup cut it <em>143MB → 65MB</em>, fixing the load-time restart',
+  p_pa_b3:'<strong>Reactive MVVM UI architecture</strong> — R3 · UniTask Controller/View/ViewModel separation + reusable shared components',
+  p_pa_b4:'External platform (mini-app) integration — symmetric client/server interface abstraction for swappable SDKs',
   p_off_meta:'Third Wave (Japan) · Freelance · 2019–2020', p_off_title:'Offima — Interior 3D Simulation',
   p_off_b1:'<strong>Self-developed runtime FBX Import/Export</strong> — a feature UE4 does not support',
   p_off_b2:'<strong>2D floor plan → 3D auto-conversion</strong> pipeline (about <em>30% less work time</em>)',
@@ -1067,6 +1100,11 @@ ja: {
   p_kib_b4:'Skinned Mesh・ボーンアニメーションシステムを直接実装',
   sub_commercial:'商用プロジェクト — ツール・パイプライン実績',
   sub_personal:'個人プロジェクト — レンダリング・エンジン拡張',
+  p_pa_meta:'Develrocket（韓国）· 2026–現在', p_pa_title:'ヒーローズスナップ — モバイル収集型RPG', p_pa_visual:'WebGL起動メモリ (MB)',
+  p_pa_b1:'<strong>マスターデータのコードジェンパイプライン構築</strong> — 企画CSV → サーバー・クライアントの型/DTOを自動生成し<em>手作業を排除</em>',
+  p_pa_b2:'<strong>WebGL起動メモリ最適化</strong> — wasm・リソース整理で<em>143MB → 65MB</em>、初期ロード時の再起動を解消',
+  p_pa_b3:'<strong>Reactive MVVM UIアーキテクチャ</strong> — R3・UniTaskベースのController/View/ViewModel分離＋再利用可能な共通コンポーネント',
+  p_pa_b4:'外部プラットフォーム（ミニアプリ）連携 — クライアント・サーバー対称のインターフェース抽象化でSDK差し替えに対応',
   p_off_meta:'Third Wave（日本）· フリーランス · 2019–2020', p_off_title:'Offima — インテリア3Dシミュレーション',
   p_off_b1:'<strong>ランタイムFBX Import/Exportを自社開発</strong> — UE4非対応機能を実装',
   p_off_b2:'<strong>2D図面 → 3D自動変換</strong>パイプライン（作業時間約<em>30%短縮</em>）',
