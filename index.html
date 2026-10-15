@@ -392,7 +392,7 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
       <span class="big-word spark">GPU</span>
       <span class="big-join" data-i18n="bl_post">로</span>
     </div>
-    <p class="body-copy phil-copy reveal" data-i18n="s1_phil">렌더링 확장의 증명 — 160개 풀잎의 물리 시뮬레이션을 전부 GPU로 옮겨 <em>CPU 부하 0%</em>를 달성했습니다. 툴을 만들며 익힌 파이프라인 감각이 렌더링에서도 통한다는 증거입니다.</p>
+    <p class="body-copy phil-copy reveal" data-i18n="s1_phil">렌더링 확장의 증명 — 풀잎 32개(마디 160개)의 바람 물리를 Compute Shader로 <em>전부 GPU에서</em> 계산합니다. 툴을 만들며 익힌 파이프라인 감각이 렌더링에서도 통한다는 증거입니다.</p>
     <p class="phil-quote reveal" data-i18n="s1_quote">도구가 좋아지면, 팀 전체가 빨라집니다.</p>
 
     <div class="stat-row">
@@ -533,12 +533,12 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
         <div class="video"><iframe src="https://www.youtube.com/embed/3B_BhG7PLUI" title="GPU Grass Animation" allowfullscreen loading="lazy"></iframe></div>
       </div>
       <div>
-        <span class="meta-label" data-i18n="p_grass_meta">개인 프로젝트 · 2025 · CPU 부하 0%</span>
+        <span class="meta-label" data-i18n="p_grass_meta">개인 프로젝트 · 2025 · GPU 물리 시뮬레이션</span>
         <h3 data-i18n="p_grass_title">GPU 실시간 풀 애니메이션</h3>
         <div class="tags">DirectX 12 · HLSL · Compute Shader · Geometry Shader</div>
         <ul class="points">
-          <li data-i18n="p_grass_b1">DirectX 12 Compute Shader로 <strong>160개 풀잎 동시 물리 시뮬레이션</strong></li>
-          <li data-i18n="p_grass_b2">모든 연산을 GPU에서 처리해 <em>CPU 부하 0%</em> 달성</li>
+          <li data-i18n="p_grass_b1">DirectX 12 Compute Shader로 <strong>풀잎 32개 × 5마디(160개) 물리 시뮬레이션</strong></li>
+          <li data-i18n="p_grass_b2">물리 연산을 <em>전부 GPU에서</em> 처리 — 쿼터니언으로 부모→자식 마디 회전 전파</li>
           <li data-i18n="p_grass_b3">관성 모멘트 · 토크 기반의 사실적인 바람 표현</li>
           <li data-i18n="p_grass_b4">Geometry Shader로 빌보드 동적 생성</li>
         </ul>
@@ -555,7 +555,7 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
         <div class="video" style="padding-bottom:0;height:auto;position:static">
           <div style="border-radius:24px;overflow:hidden;background:#0a0a0a;padding:48px;text-align:center">
             <div style="font-size:64px;font-weight:400;letter-spacing:-.04em;color:#8052ff">2,048</div>
-            <div style="font-size:13px;font-weight:600;letter-spacing:.35px;text-transform:uppercase;color:#9a9a9a;margin-top:8px" data-i18n="p_cull_visual">GPU가 직접 제어하는 오브젝트</div>
+            <div style="font-size:13px;font-weight:600;letter-spacing:.35px;text-transform:uppercase;color:#9a9a9a;margin-top:8px" data-i18n="p_cull_visual">Indirect 버퍼 최대 오브젝트 수</div>
           </div>
         </div>
       </div>
@@ -567,7 +567,7 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
           <li data-i18n="p_cull_b1"><strong>128개 스레드 병렬 가시성 판정</strong>으로 동시 오브젝트 컬링</li>
           <li data-i18n="p_cull_b2">ExecuteIndirect API — GPU가 드로우 콜을 직접 제어해 <em>CPU 오버헤드 제거</em></li>
           <li data-i18n="p_cull_b3">바운딩 박스 × 6평면 교차 검사로 정확한 컬링</li>
-          <li data-i18n="p_cull_b4">최대 2,048개 오브젝트 인스턴싱 + Triple Buffering 파이프라인 최적화</li>
+          <li data-i18n="p_cull_b4">최대 2,048개를 담는 Indirect 커맨드 버퍼(데모 125개) + Triple Buffering 프레임 리소스</li>
         </ul>
         <div class="proj-links">
           <a class="src" href="https://github.com/kangyh04/GPUFrustumCulling" target="_blank" rel="noopener">Source →</a>
@@ -604,9 +604,9 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
         <h3 data-i18n="p_ik_title">FABRIK IK 시스템</h3>
         <div class="tags">Unity 6 · C#</div>
         <ul class="points">
-          <li data-i18n="p_ik_b1">Forward/Backward 반복 알고리즘으로 <strong>빠른 IK 체인 계산</strong></li>
+          <li data-i18n="p_ik_b1">Forward/Backward 패스로 <strong>IK 체인 계산</strong></li>
           <li data-i18n="p_ik_b2">계층적 다중 체인 구조 지원</li>
-          <li data-i18n="p_ik_b3">커스텀 솔버로 확장 가능한 유연한 설계</li>
+          <li data-i18n="p_ik_b3">체인 단위 구조 — 반복 수렴과 발 IK 솔버로 확장 중</li>
         </ul>
         <div class="proj-links">
           <a class="src" href="https://github.com/kangyh04/IK" target="_blank" rel="noopener">Source →</a>
@@ -632,7 +632,7 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
           <li data-i18n="p_ql_b1"><strong>Q-Learning 강화학습</strong> 기반 경로 탐색</li>
           <li data-i18n="p_ql_b2">Eller's Algorithm으로 동적 미로 생성</li>
           <li data-i18n="p_ql_b3">학습 과정을 3D 환경에서 실시간 시각화</li>
-          <li data-i18n="p_ql_b4">A* 알고리즘 구현으로 최적 경로와 비교 검증</li>
+          <li data-i18n="p_ql_b4">A* 알고리즘을 직접 구현해 목표까지의 거리를 보상 설계에 활용</li>
         </ul>
         <div class="proj-links">
           <a class="src" href="https://github.com/kangyh04/Tracking" target="_blank" rel="noopener">Source →</a>
@@ -657,7 +657,7 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
         <ul class="points">
           <li data-i18n="p_kib_b1">상용 엔진 없이 <strong>렌더링 · 입력 · 사운드 모듈을 바닥부터 구축</strong></li>
           <li data-i18n="p_kib_b2">QuadTree + Frustum Culling 기반 대규모 지형 LOD 시스템</li>
-          <li data-i18n="p_kib_b3">자체 XML Parser로 DCC 툴 데이터 파이프라인 구축</li>
+          <li data-i18n="p_kib_b3">MSXML 기반 로더로 DCC 툴 데이터(XML) 파이프라인 구축</li>
           <li data-i18n="p_kib_b4">Skinned Mesh · 본 애니메이션 시스템 직접 구현</li>
         </ul>
         <div class="proj-links">
@@ -706,8 +706,8 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
           <li data-i18n="sk1_e3">GPU 물리 시뮬레이션 · 실시간 큐브맵 반사</li>
         </ul>
         <div class="nums">
-          <div class="row"><span class="v">0%</span><span class="k" data-i18n="sk1_n1">GPU 시뮬레이션 CPU 부하</span></div>
-          <div class="row"><span class="v">2,048</span><span class="k" data-i18n="sk1_n2">GPU 컬링 동시 처리 오브젝트</span></div>
+          <div class="row"><span class="v">160</span><span class="k" data-i18n="sk1_n1">GPU에서 시뮬레이션하는 풀잎 마디</span></div>
+          <div class="row"><span class="v">2,048</span><span class="k" data-i18n="sk1_n2">GPU 컬링 Indirect 버퍼 용량</span></div>
         </div>
       </div>
 
@@ -854,40 +854,40 @@ ko: {
   s1_title:'혼자 끝까지,<br>팀은 더 빠르게',
   s1_desc:'클라이언트 · 서버 · 툴 · 빌드를 한 사람이 이어서 볼 수 있으면 기획 의도가 라이브까지 끊기지 않습니다. 그리고 그 구조를 동료가 저 없이도 쓸 수 있게 남깁니다.',
   bl_pre:'', bl_mid:'에서', bl_post:'로',
-  s1_phil:'렌더링 확장의 증명 — 160개 풀잎의 물리 시뮬레이션을 전부 GPU로 옮겨 <em>CPU 부하 0%</em>를 달성했습니다. 툴을 만들며 익힌 파이프라인 감각이 렌더링에서도 통한다는 증거입니다.',
+  s1_phil:'렌더링 확장의 증명 — 풀잎 32개(마디 160개)의 바람 물리를 Compute Shader로 <em>전부 GPU에서</em> 계산합니다. 툴을 만들며 익힌 파이프라인 감각이 렌더링에서도 통한다는 증거입니다.',
   s1_quote:'도구가 좋아지면, 팀 전체가 빨라집니다.',
   stat1_k:'코드 수정 없이 반영된 기획 커밋', stat1_s:'CSV 한 장에서 클라이언트 · 게임서버 · 운영서버 코드 생성 (스키마 95종)',
   stat2_v:'10년+', stat2_k:'실무 경력', stat2_s:'일본 게임업계 정사원 + 프리랜서 — 게임 · SaaS 프로젝트 다수 수행',
   stat3_k:'클라이언트 → 서버 → 배포', stat3_s:'전투 · UI 아키텍처, 게임서버 · 운영서버 단독 개발, Jenkins 배포까지 직접 구축',
   s2_label:'02. 프로젝트', s2_title:'실전으로 증명한<br>결과물',
   s2_desc:'라이브 서비스 중인 상용 프로젝트의 전투 · 플랫폼 · 서버 실적과, 그래픽스 · 엔진 개인 프로젝트입니다. 영상과 소스코드로 직접 확인하세요.',
-  p_grass_meta:'개인 프로젝트 · 2025 · CPU 부하 0%', p_grass_title:'GPU 실시간 풀 애니메이션',
-  p_grass_b1:'DirectX 12 Compute Shader로 <strong>160개 풀잎 동시 물리 시뮬레이션</strong>',
-  p_grass_b2:'모든 연산을 GPU에서 처리해 <em>CPU 부하 0%</em> 달성',
+  p_grass_meta:'개인 프로젝트 · 2025 · GPU 물리 시뮬레이션', p_grass_title:'GPU 실시간 풀 애니메이션',
+  p_grass_b1:'DirectX 12 Compute Shader로 <strong>풀잎 32개 × 5마디(160개) 물리 시뮬레이션</strong>',
+  p_grass_b2:'물리 연산을 <em>전부 GPU에서</em> 처리 — 쿼터니언으로 부모→자식 마디 회전 전파',
   p_grass_b3:'관성 모멘트 · 토크 기반의 사실적인 바람 표현',
   p_grass_b4:'Geometry Shader로 빌보드 동적 생성',
   p_cull_meta:'개인 프로젝트 · GPU-Driven Rendering', p_cull_title:'GPU 프러스텀 컬링 시스템',
-  p_cull_visual:'GPU가 직접 제어하는 오브젝트',
+  p_cull_visual:'Indirect 버퍼 최대 오브젝트 수',
   p_cull_b1:'<strong>128개 스레드 병렬 가시성 판정</strong>으로 동시 오브젝트 컬링',
   p_cull_b2:'ExecuteIndirect API — GPU가 드로우 콜을 직접 제어해 <em>CPU 오버헤드 제거</em>',
   p_cull_b3:'바운딩 박스 × 6평면 교차 검사로 정확한 컬링',
-  p_cull_b4:'최대 2,048개 오브젝트 인스턴싱 + Triple Buffering 파이프라인 최적화',
+  p_cull_b4:'최대 2,048개를 담는 Indirect 커맨드 버퍼(데모 125개) + Triple Buffering 프레임 리소스',
   p_refl_meta:'개인 프로젝트 · Dynamic Cubemap', p_refl_title:'실시간 환경 반사 렌더링',
   p_refl_b1:'<strong>6방향 큐브맵 실시간 렌더링</strong> — 금속 물체 기준 동적 생성',
   p_refl_b2:'시간 기반 동적 스카이박스',
   p_ik_meta:'개인 프로젝트 · Inverse Kinematics', p_ik_title:'FABRIK IK 시스템',
-  p_ik_b1:'Forward/Backward 반복 알고리즘으로 <strong>빠른 IK 체인 계산</strong>',
+  p_ik_b1:'Forward/Backward 패스로 <strong>IK 체인 계산</strong>',
   p_ik_b2:'계층적 다중 체인 구조 지원',
-  p_ik_b3:'커스텀 솔버로 확장 가능한 유연한 설계',
+  p_ik_b3:'체인 단위 구조 — 반복 수렴과 발 IK 솔버로 확장 중',
   p_ql_meta:'개인 프로젝트 · 강화학습', p_ql_title:'Q-Learning 미로 탐색 AI', p_ql_visual:'강화학습 기반 경로 탐색',
   p_ql_b1:'<strong>Q-Learning 강화학습</strong> 기반 경로 탐색',
   p_ql_b2:"Eller's Algorithm으로 동적 미로 생성",
   p_ql_b3:'학습 과정을 3D 환경에서 실시간 시각화',
-  p_ql_b4:'A* 알고리즘 구현으로 최적 경로와 비교 검증',
+  p_ql_b4:'A* 알고리즘을 직접 구현해 목표까지의 거리를 보상 설계에 활용',
   p_kib_meta:'자체 라이브러리 개발 · 2014', p_kib_title:'KIB Framework — 3D 게임 라이브러리', p_kib_visual:'상용 엔진 없이 바닥부터',
   p_kib_b1:'상용 엔진 없이 <strong>렌더링 · 입력 · 사운드 모듈을 바닥부터 구축</strong>',
   p_kib_b2:'QuadTree + Frustum Culling 기반 대규모 지형 LOD 시스템',
-  p_kib_b3:'자체 XML Parser로 DCC 툴 데이터 파이프라인 구축',
+  p_kib_b3:'MSXML 기반 로더로 DCC 툴 데이터(XML) 파이프라인 구축',
   p_kib_b4:'Skinned Mesh · 본 애니메이션 시스템 직접 구현',
   sub_commercial:'상용 프로젝트 — 클라이언트 · 서버 · 파이프라인',
   sub_personal:'개인 프로젝트 — 그래픽스 · 엔진',
@@ -922,7 +922,7 @@ ko: {
   sk1_e1:'DirectX 자체 엔진 라이브러리 구축',
   sk1_e2:'ExecuteIndirect 기반 GPU-Driven Rendering 구현',
   sk1_e3:'GPU 물리 시뮬레이션 · 실시간 큐브맵 반사',
-  sk1_n1:'GPU 시뮬레이션 CPU 부하', sk1_n2:'GPU 컬링 동시 처리 오브젝트',
+  sk1_n1:'GPU에서 시뮬레이션하는 풀잎 마디', sk1_n2:'GPU 컬링 Indirect 버퍼 용량',
   sk2_d:'상용 엔진의 한계를 넘어 미지원 기능을 직접 구현하는 엔진 개발 역량',
   sk2_e1:'UE4 런타임 FBX Import/Export 자체 개발',
   sk2_e2:'Unity 미지원 3D Sprite 기능 구현',
@@ -969,40 +969,40 @@ en: {
   s1_title:'End to end on my own,<br>faster as a team',
   s1_desc:'When one person can follow client, server, tools, and builds together, design intent reaches live service without breaking. And I leave those structures so teammates can use them without me.',
   bl_pre:'From', bl_mid:'to', bl_post:'',
-  s1_phil:'Proof of the rendering expansion — I moved the physics simulation of 160 grass blades entirely to the GPU, achieving <em>0% CPU load</em>. The pipeline sense built from years of tooling works in rendering too.',
+  s1_phil:'Proof of the rendering expansion — the wind physics of 32 grass blades (160 segments) runs <em>entirely on the GPU</em> in a compute shader. The pipeline sense built from years of tooling works in rendering too.',
   s1_quote:'Better tools make the whole team faster.',
   stat1_k:'Planner commits shipped with zero code changes', stat1_s:'One CSV generates client, game-server, and ops-server code (95 schemas)',
   stat2_v:'10+ yrs', stat2_k:'Industry Experience', stat2_s:'Full-time + freelance in the Japanese game industry — numerous game & SaaS projects',
   stat3_k:'Client → Server → Deploy', stat3_s:'Combat &amp; UI architecture, game and ops servers built solo, Jenkins deployment — built end to end',
   s2_label:'02. Projects', s2_title:'Results proven<br>in practice',
   s2_desc:'Combat, platform, and server work from live commercial projects, plus graphics &amp; engine personal projects. See for yourself through videos and source code.',
-  p_grass_meta:'Personal Project · 2025 · 0% CPU Load', p_grass_title:'GPU Real-time Grass Animation',
-  p_grass_b1:'<strong>Simultaneous physics simulation of 160 grass blades</strong> with DirectX 12 Compute Shader',
-  p_grass_b2:'Achieved <em>0% CPU load</em> by processing all computation on the GPU',
+  p_grass_meta:'Personal Project · 2025 · GPU Physics Simulation', p_grass_title:'GPU Real-time Grass Animation',
+  p_grass_b1:'<strong>Physics simulation of 32 grass blades × 5 segments (160)</strong> with DirectX 12 Compute Shader',
+  p_grass_b2:'All physics computed <em>on the GPU</em> — quaternion rotation propagated from parent to child segments',
   p_grass_b3:'Realistic wind response based on moment of inertia and torque',
   p_grass_b4:'Dynamic billboard generation with Geometry Shader',
   p_cull_meta:'Personal Project · GPU-Driven Rendering', p_cull_title:'GPU Frustum Culling System',
-  p_cull_visual:'Objects controlled directly by the GPU',
+  p_cull_visual:'Max objects in the indirect buffer',
   p_cull_b1:'<strong>Parallel visibility testing with 128 threads</strong> culling objects simultaneously',
   p_cull_b2:'ExecuteIndirect API — the GPU controls draw calls directly, <em>eliminating CPU overhead</em>',
   p_cull_b3:'Accurate culling via bounding box × 6-plane intersection tests',
-  p_cull_b4:'Instancing of up to 2,048 objects + Triple Buffering pipeline optimization',
+  p_cull_b4:'Indirect command buffer for up to 2,048 objects (125 in the demo) + triple-buffered frame resources',
   p_refl_meta:'Personal Project · Dynamic Cubemap', p_refl_title:'Real-time Environment Reflection',
   p_refl_b1:'<strong>Real-time 6-directional cubemap rendering</strong> — dynamically generated around a metallic object',
   p_refl_b2:'Time-based dynamic skybox',
   p_ik_meta:'Personal Project · Inverse Kinematics', p_ik_title:'FABRIK IK System',
-  p_ik_b1:'<strong>Fast IK chain computation</strong> via Forward/Backward iterative algorithm',
+  p_ik_b1:'<strong>IK chain solving</strong> with forward/backward passes',
   p_ik_b2:'Supports hierarchical multi-chain structures',
-  p_ik_b3:'Flexible design extensible with custom solvers',
+  p_ik_b3:'Chain-based structure — being extended with iterative convergence and a foot-IK solver',
   p_ql_meta:'Personal Project · Reinforcement Learning', p_ql_title:'Q-Learning Maze-Solving AI', p_ql_visual:'RL-based pathfinding',
   p_ql_b1:'Pathfinding based on <strong>Q-Learning reinforcement learning</strong>',
   p_ql_b2:"Dynamic maze generation with Eller's Algorithm",
   p_ql_b3:'Real-time visualization of the learning process in a 3D environment',
-  p_ql_b4:'A* implementation for comparison against the optimal path',
+  p_ql_b4:'Implemented A* and used the distance-to-goal in reward shaping',
   p_kib_meta:'In-house Library · 2014', p_kib_title:'KIB Framework — 3D Game Library', p_kib_visual:'From scratch, no commercial engine',
   p_kib_b1:'<strong>Built rendering, input, and sound modules from scratch</strong> without a commercial engine',
   p_kib_b2:'Large-scale terrain LOD system with QuadTree + Frustum Culling',
-  p_kib_b3:'Custom XML Parser for the DCC tool data pipeline',
+  p_kib_b3:'MSXML-based loader for the DCC tool data (XML) pipeline',
   p_kib_b4:'Skinned mesh and bone animation systems implemented directly',
   sub_commercial:'Commercial — Client · Server · Pipeline',
   sub_personal:'Personal — Graphics &amp; Engine',
@@ -1037,7 +1037,7 @@ en: {
   sk1_e1:'Built an in-house DirectX engine library',
   sk1_e2:'GPU-Driven Rendering with ExecuteIndirect',
   sk1_e3:'GPU physics simulation · real-time cubemap reflection',
-  sk1_n1:'CPU load in GPU simulation', sk1_n2:'Objects handled by GPU culling',
+  sk1_n1:'Grass segments simulated on the GPU', sk1_n2:'GPU culling indirect buffer capacity',
   sk2_d:'Engine development that goes beyond commercial engine limits, implementing unsupported features',
   sk2_e1:'Self-developed UE4 runtime FBX Import/Export',
   sk2_e2:'Implemented 3D Sprite unsupported by Unity',
@@ -1084,40 +1084,40 @@ ja: {
   s1_title:'一人で最後まで、<br>チームはより速く',
   s1_desc:'クライアント・サーバー・ツール・ビルドを一人で通して見られれば、企画の意図がライブまで途切れません。そしてその仕組みを、私がいなくても仲間が使えるように残します。',
   bl_pre:'', bl_mid:'から', bl_post:'へ',
-  s1_phil:'レンダリング拡張の証明 — 160枚の草の葉の物理シミュレーションをすべてGPUに移し、<em>CPU負荷0%</em>を達成。ツール開発で培ったパイプライン感覚がレンダリングでも通用する証拠です。',
+  s1_phil:'レンダリング拡張の証明 — 草32本（節160個）の風の物理をCompute Shaderで<em>すべてGPU上</em>で計算します。ツール開発で培ったパイプライン感覚がレンダリングでも通用する証拠です。',
   s1_quote:'ツールが良くなれば、チーム全体が速くなります。',
   stat1_k:'コード修正なしで反映された企画コミット', stat1_s:'CSV1枚からクライアント・ゲームサーバー・運営サーバーのコードを生成（スキーマ95種）',
   stat2_v:'10年+', stat2_k:'実務経験', stat2_s:'日本ゲーム業界の正社員＋フリーランス — ゲーム・SaaSプロジェクト多数',
   stat3_k:'クライアント → サーバー → デプロイ', stat3_s:'戦闘・UIアーキテクチャ、ゲーム/運営サーバーの単独開発、Jenkinsデプロイまで自ら構築',
   s2_label:'02. プロジェクト', s2_title:'実戦で証明した<br>成果物',
   s2_desc:'ライブ運営中の商用プロジェクトでの戦闘・プラットフォーム・サーバー実績と、グラフィックス・エンジンの個人プロジェクトです。映像とソースコードでご確認ください。',
-  p_grass_meta:'個人プロジェクト · 2025 · CPU負荷0%', p_grass_title:'GPUリアルタイム草アニメーション',
-  p_grass_b1:'DirectX 12 Compute Shaderで<strong>160枚の草の葉を同時に物理シミュレーション</strong>',
-  p_grass_b2:'すべての演算をGPUで処理し、<em>CPU負荷0%</em>を達成',
+  p_grass_meta:'個人プロジェクト · 2025 · GPU物理シミュレーション', p_grass_title:'GPUリアルタイム草アニメーション',
+  p_grass_b1:'DirectX 12 Compute Shaderで<strong>草32本×5節（160個）を物理シミュレーション</strong>',
+  p_grass_b2:'物理演算を<em>すべてGPUで</em>処理 — クォータニオンで親→子の節へ回転を伝播',
   p_grass_b3:'慣性モーメント・トルクに基づくリアルな風の表現',
   p_grass_b4:'Geometry Shaderでビルボードを動的生成',
   p_cull_meta:'個人プロジェクト · GPU-Driven Rendering', p_cull_title:'GPUフラスタムカリングシステム',
-  p_cull_visual:'GPUが直接制御するオブジェクト',
+  p_cull_visual:'Indirectバッファの最大オブジェクト数',
   p_cull_b1:'<strong>128スレッドの並列可視性判定</strong>による同時オブジェクトカリング',
   p_cull_b2:'ExecuteIndirect API — GPUがドローコールを直接制御し、<em>CPUオーバーヘッドを排除</em>',
   p_cull_b3:'バウンディングボックス×6平面の交差検査による正確なカリング',
-  p_cull_b4:'最大2,048個のオブジェクトのインスタンシング＋Triple Bufferingパイプライン最適化',
+  p_cull_b4:'最大2,048個を格納するIndirectコマンドバッファ（デモは125個）＋Triple Bufferingのフレームリソース',
   p_refl_meta:'個人プロジェクト · Dynamic Cubemap', p_refl_title:'リアルタイム環境反射レンダリング',
   p_refl_b1:'<strong>6方向キューブマップのリアルタイムレンダリング</strong> — 金属オブジェクト基準で動的生成',
   p_refl_b2:'時間ベースの動的スカイボックス',
   p_ik_meta:'個人プロジェクト · Inverse Kinematics', p_ik_title:'FABRIK IKシステム',
-  p_ik_b1:'Forward/Backward反復アルゴリズムによる<strong>高速なIKチェーン計算</strong>',
+  p_ik_b1:'Forward/Backwardパスによる<strong>IKチェーン計算</strong>',
   p_ik_b2:'階層的マルチチェーン構造をサポート',
-  p_ik_b3:'カスタムソルバーで拡張可能な柔軟な設計',
+  p_ik_b3:'チェーン単位の構造 — 反復収束と足IKソルバーへ拡張中',
   p_ql_meta:'個人プロジェクト · 強化学習', p_ql_title:'Q-Learning迷路探索AI', p_ql_visual:'強化学習ベースの経路探索',
   p_ql_b1:'<strong>Q-Learning強化学習</strong>ベースの経路探索',
   p_ql_b2:"Eller's Algorithmによる動的迷路生成",
   p_ql_b3:'学習プロセスを3D環境でリアルタイム可視化',
-  p_ql_b4:'A*アルゴリズム実装で最適経路と比較検証',
+  p_ql_b4:'A*アルゴリズムを実装し、ゴールまでの距離を報酬設計に活用',
   p_kib_meta:'自作ライブラリ開発 · 2014', p_kib_title:'KIB Framework — 3Dゲームライブラリ', p_kib_visual:'商用エンジンなしでゼロから',
   p_kib_b1:'商用エンジンなしで<strong>レンダリング・入力・サウンドモジュールをゼロから構築</strong>',
   p_kib_b2:'QuadTree＋Frustum Cullingによる大規模地形LODシステム',
-  p_kib_b3:'自作XMLパーサーによるDCCツールのデータパイプライン構築',
+  p_kib_b3:'MSXMLベースのローダーでDCCツールのデータ（XML）パイプラインを構築',
   p_kib_b4:'Skinned Mesh・ボーンアニメーションシステムを直接実装',
   sub_commercial:'商用プロジェクト — クライアント・サーバー・パイプライン',
   sub_personal:'個人プロジェクト — グラフィックス・エンジン',
@@ -1152,7 +1152,7 @@ ja: {
   sk1_e1:'DirectX自作エンジンライブラリの構築',
   sk1_e2:'ExecuteIndirectベースのGPU-Driven Rendering実装',
   sk1_e3:'GPU物理シミュレーション・リアルタイムキューブマップ反射',
-  sk1_n1:'GPUシミュレーションのCPU負荷', sk1_n2:'GPUカリング同時処理オブジェクト',
+  sk1_n1:'GPUでシミュレーションする草の節', sk1_n2:'GPUカリングのIndirectバッファ容量',
   sk2_d:'商用エンジンの限界を超え、非対応機能を直接実装するエンジン開発力',
   sk2_e1:'UE4ランタイムFBX Import/Exportの自社開発',
   sk2_e2:'Unity非対応の3D Sprite機能を実装',

@@ -437,7 +437,7 @@
                     <ul class="project-achievements">
                         <li>상용 엔진 없이 <strong>DirectX 9 API를 활용하여 렌더링/입력/사운드 모듈</strong> 바닥부터 구축</li>
                         <li><strong>QuadTree 및 Frustum Culling</strong>을 활용한 대규모 지형 LOD 시스템 구현</li>
-                        <li><strong>자체 XML Parser</strong> 설계로 DCC 툴과의 데이터 파이프라인 구축</li>
+                        <li><strong>MSXML 기반 로더</strong>로 DCC 툴 데이터(XML) 파이프라인 구축</li>
                         <li>Skinned Mesh 및 본 애니메이션 시스템 직접 구현</li>
                     </ul>
                     <div class="project-links">
@@ -453,8 +453,8 @@
                         <div class="project-meta">DirectX 12, HLSL, C++ | 개인 프로젝트 | 2025</div>
                     </div>
                     <ul class="project-achievements">
-                        <li>DirectX 12 Compute Shader로 <strong>160개 풀잎 동시 물리 시뮬레이션</strong></li>
-                        <li><strong>CPU 부하 0%</strong> 달성 (모든 연산을 GPU에서 처리)</li>
+                        <li>DirectX 12 Compute Shader로 <strong>풀잎 32개 × 5마디(160개) 물리 시뮬레이션</strong></li>
+                        <li>물리 연산을 <strong>전부 GPU에서</strong> 처리 (쿼터니언으로 부모→자식 마디 회전 전파)</li>
                         <li>관성 모멘트, 토크 기반 사실적인 바람 표현</li>
                         <li>Geometry Shader로 빌보드 동적 생성</li>
                     </ul>
@@ -492,9 +492,9 @@
                         <div class="project-meta">Unity, C# | 개인 프로젝트 | 2025</div>
                     </div>
                     <ul class="project-achievements">
-                        <li>Forward/Backward 반복 알고리즘으로 IK 체인 계산</li>
+                        <li>Forward/Backward 패스로 IK 체인 계산</li>
                         <li>계층적 다중 체인 구조 지원</li>
-                        <li>커스텀 솔버 시스템으로 확장 가능</li>
+                        <li>반복 수렴 · 발 IK 솔버로 확장 중</li>
                     </ul>
                     <div class="project-links">
                         <a href="https://www.youtube.com/watch?v=w6Tr8RQ340s" target="_blank" class="project-link">
