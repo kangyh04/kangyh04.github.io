@@ -326,6 +326,49 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
 }
+
+/* ---------- 인쇄(PDF) : 화면과 같은 검은 배경 ---------- */
+.print-thumb,.print-brain{display:none}
+@media print{
+  @page{size:A4;margin:0}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;animation:none!important;transition:none!important}
+  html,body{background:#000!important}
+  body{padding:14mm 12mm}
+  nav,#ambientCanvas,.scroll-hint,.lang-switch,.hero-cta,.contact-mega{display:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+  section{padding:30px 0!important}
+  .hero{min-height:0!important;padding:0 0 24px!important}
+  .hero-grid{grid-template-columns:1.05fr .95fr!important;gap:24px!important}
+  .constellation{min-height:420px!important;order:0!important;margin-right:-40px}
+  .constellation #brainCanvas{display:none!important}
+  .constellation .print-brain{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:scale(1.35);filter:brightness(1.35)}
+  .wrap{padding:0!important;max-width:none}
+  section .wrap > .sec-head{grid-template-columns:1fr!important;gap:8px!important;margin-bottom:24px!important}
+  .sec-head .h-lg,.sec-head .body-copy{grid-column:1!important}
+  .h-lg{font-size:30px!important}
+  .display{font-size:28px!important}
+  #about .big-line,#about .phil-copy,#about .phil-quote{margin-left:0!important}
+  .big-word{font-size:48px!important}
+  .phil-quote{font-size:20px!important;margin-bottom:24px!important}
+  .stat-row,.skill-row,.info-row{grid-template-columns:repeat(3,1fr)!important;gap:18px!important}
+  .stat .v{font-size:34px!important}
+  .proj,.proj.flip{grid-template-columns:1fr 1fr!important;gap:22px!important;padding:22px 0!important}
+  .proj.flip .media{order:2!important}
+  .proj .media{position:static!important}
+  .proj h3{font-size:21px!important}
+  .points li{font-size:12.5px!important}
+  .proj .video iframe{display:none!important}
+  .proj .video .print-thumb{display:block;position:absolute;inset:0}
+  .proj .video .print-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .proj,.career,.skill,.stat,.info,.sec-head{break-inside:avoid;page-break-inside:avoid}
+  .career{grid-template-columns:150px 1fr!important;padding:16px 0!important}
+  .contact-lead{display:none}
+  .contact-actions{margin-bottom:0!important}
+  footer{padding:12px 0!important}
+  a[href^="http"]{text-decoration:none}
+  #contact .wrap{break-inside:avoid;page-break-inside:avoid;padding-top:20px!important}
+  #contact .h-lg{font-size:26px!important}
+}
 </style>
 </head>
 <body>
@@ -366,7 +409,7 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
     <div>
       <span class="label reveal">Client · Server · Engine Tools · Pipeline</span>
       <h1 class="display reveal" data-i18n="hero_title">게임 클라이언트를<br>끝까지 책임지는 프로그래머</h1>
-      <p class="body-copy reveal" data-i18n="hero_body">전투와 화면을 설계하고, 그것을 받치는 <strong>서버 · 데이터 파이프라인 · 빌드 자동화</strong>까지 직접 만들어 라이브로 가져갑니다. 일본 게임업계 10년, 최근에는 방치형 수집 RPG <strong>히어로즈스냅</strong>의 클라이언트와 서버를 맡았습니다. 엔진이 지원하지 않는 기능은 직접 만들고, DirectX 12로 렌더링도 파고 있습니다.</p>
+      <p class="body-copy reveal" data-i18n="hero_body">전투와 화면을 설계하고, 그것을 받치는 <strong>서버 · 데이터 파이프라인 · 빌드 자동화</strong>를 직접 만들어 라이브 배포까지 책임감 있게 완수합니다. 일본 게임업계 10년, 최근에는 방치형 수집 RPG <strong>히어로즈스냅</strong>의 클라이언트와 서버를 맡았습니다. 엔진이 지원하지 않는 기능은 직접 만들고, DirectX 12로 렌더링도 파고 있습니다.</p>
       <div class="hero-cta reveal">
         <a class="btn-pill" href="#projects" data-i18n="hero_cta2">프로젝트 보기 ↓</a>
       </div>
@@ -466,6 +509,7 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
           <li data-i18n="p_off_b1"><strong>런타임 FBX Import/Export 자체 개발</strong> — UE4 미지원 기능 구현</li>
           <li data-i18n="p_off_b2"><strong>2D 도면 → 3D 자동 변환</strong> 파이프라인 (작업 시간 약 <em>30% 단축</em>)</li>
           <li data-i18n="p_off_b3">Jenkins CI/CD 구축 — 빌드/배포 완전 자동화 + Slack 알림 통합</li>
+          <li data-i18n="p_off_b4"><strong>게임 개발로 이어지는 점</strong> — 엔진 기능의 C++ 확장은 런타임 에셋 로딩 · 메시 생성에, 데이터 임포트 · 최적화는 아트 리소스 파이프라인에, 자동화는 팀의 반복 속도에 쓰입니다</li>
         </ul>
       </div>
     </div>
@@ -507,19 +551,18 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
     <!-- Etc -->
     <div class="proj flip reveal">
       <div class="media">
-        <div class="video" style="padding-bottom:0;height:auto;position:static">
-          <div style="border-radius:24px;overflow:hidden;background:#0a0a0a;padding:48px;text-align:center">
-            <div style="font-size:64px;font-weight:400;letter-spacing:-.04em;color:#8052ff">gRPC</div>
-            <div style="font-size:13px;font-weight:600;letter-spacing:.35px;text-transform:uppercase;color:#9a9a9a;margin-top:8px" data-i18n="p_etc_visual">C# 서버 실시간 통신</div>
-          </div>
-        </div>
+        <a class="video" href="https://rium.io/mahjong" target="_blank" rel="noopener" style="display:block">
+          <img src="images/metamahjong.jpg" alt="MetaMahjong" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        </a>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#9a9a9a;margin-top:10px;text-align:center" data-i18n="p_etc_visual">MetaMahjong · rium.io/mahjong</div>
       </div>
       <div>
         <span class="meta-label" data-i18n="p_etc_meta">프리랜서 · 일본 게임/SaaS 기업</span>
         <h3 data-i18n="p_etc_title">그 외 라이브 프로젝트</h3>
         <div class="tags">Unity · C# Server · gRPC · WebSocket</div>
         <ul class="points">
-          <li data-i18n="p_etc_b1"><strong>MetaMahjong (온라인 마작):</strong> C# 서버 — <em>gRPC 통신 · WebSocket 통합</em></li>
+          <li data-i18n="p_etc_b1"><strong>MetaMahjong (온라인 마작 · 출시):</strong> gRPC 양방향 스트림 + WebSocket을 같은 코드로 다루는 래퍼 — <em>서비스 코드 수정 없이 앱 · 웹 지원</em></li>
+          <li data-i18n="p_etc_b5"><strong>WordBreaker (시청자 참여형 벽돌깨기 · 출시):</strong> 4인 팀의 유일한 프로그래머 — In/OutGame 설계 · <em>기획자용 영역 에디터</em></li>
           <li data-i18n="p_etc_b2"><strong>CordGem (JRPG):</strong> UI 제외 전투 전체 · 스킬 이펙트·타이밍 툴 · FSM 적 AI · 굴절·반사 셰이더</li>
           <li data-i18n="p_etc_b3"><strong>Freya:</strong> 육각형 타일 시스템 · Unity 미지원 3D Sprite 자체 구현</li>
           <li data-i18n="p_etc_b4"><strong>마치가이 브레이커:</strong> NGUI UI · 정답률 시각화 셰이더</li>
@@ -760,7 +803,7 @@ footer{padding:var(--sp-36) 0 var(--sp-60)}
         <ul class="points">
           <li data-i18n="c1_b4"><strong>MetaMahjong:</strong> Unity 온라인 마작 — C# 서버 · gRPC 통신 · WebSocket 통합</li>
           <li data-i18n="c1_b3"><strong>CordGem:</strong> Unity JRPG — 배틀 시스템 · HLSL 셰이더 · FSM AI</li>
-          <li data-i18n="c1_b2"><strong>WordBreaker:</strong> Unity 웹 게임 — YouTube 시청자 참여형 벽돌깨기 · 클라이언트 단독 개발</li>
+          <li data-i18n="c1_b2"><strong>WordBreaker:</strong> Unity 웹 게임 — YouTube 시청자 참여형 벽돌깨기 · 클라이언트 단독 개발 · 기획자용 영역 에디터</li>
           <li data-i18n="c1_b1"><strong>Offima:</strong> UE4 인테리어 시뮬레이션 — FBX 런타임 처리 · 2D→3D 변환</li>
         </ul>
       </div>
@@ -850,7 +893,7 @@ ko: {
   nav_role:'Game Client Programmer',
   nav_about:'소개', nav_proj:'프로젝트', nav_skill:'핵심 역량', nav_career:'경력', nav_resume:'이력서',
   hero_title:'게임 클라이언트를<br>끝까지 책임지는 프로그래머',
-  hero_body:'전투와 화면을 설계하고, 그것을 받치는 <strong>서버 · 데이터 파이프라인 · 빌드 자동화</strong>까지 직접 만들어 라이브로 가져갑니다. 일본 게임업계 10년, 최근에는 방치형 수집 RPG <strong>히어로즈스냅</strong>의 클라이언트와 서버를 맡았습니다. 엔진이 지원하지 않는 기능은 직접 만들고, DirectX 12로 렌더링도 파고 있습니다.',
+  hero_body:'전투와 화면을 설계하고, 그것을 받치는 <strong>서버 · 데이터 파이프라인 · 빌드 자동화</strong>를 직접 만들어 라이브 배포까지 책임감 있게 완수합니다. 일본 게임업계 10년, 최근에는 방치형 수집 RPG <strong>히어로즈스냅</strong>의 클라이언트와 서버를 맡았습니다. 엔진이 지원하지 않는 기능은 직접 만들고, DirectX 12로 렌더링도 파고 있습니다.',
   hero_cta1:'이력서 보기', hero_cta2:'프로젝트 보기 ↓',
   s1_label:'01. 소개',
   s1_title:'혼자 끝까지,<br>팀은 더 빠르게',
@@ -904,6 +947,7 @@ ko: {
   p_off_b1:'<strong>런타임 FBX Import/Export 자체 개발</strong> — UE4 미지원 기능 구현',
   p_off_b2:'<strong>2D 도면 → 3D 자동 변환</strong> 파이프라인 (작업 시간 약 <em>30% 단축</em>)',
   p_off_b3:'Jenkins CI/CD 구축 — 빌드/배포 완전 자동화 + Slack 알림 통합',
+  p_off_b4:'<strong>게임 개발로 이어지는 점</strong> — 엔진 기능의 C++ 확장은 런타임 에셋 로딩 · 메시 생성에, 데이터 임포트 · 최적화는 아트 리소스 파이프라인에, 자동화는 팀의 반복 속도에 쓰입니다',
   p_bp_meta:'Dropseed (일본) · 정규직 · 2018–2019', p_bp_title:'B-Project — 모바일 리듬 게임',
   p_bp_b1:'<strong>악보 에디터 툴 개발</strong> — 기획자가 직접 쓰는 비주얼 에디터 + 실시간 프리뷰',
   p_bp_b2:'악보 제작 시간 <em>50% 이상 단축</em> (Unity 왕복 디버그 → 툴 내 제작·테스트)',
@@ -912,8 +956,9 @@ ko: {
   p_odin_b1:'<strong>Shadow Baking Tool 개발</strong> — 런타임 연산 제거로 <em>FPS 30% 향상</em>',
   p_odin_b2:'NGUI 기반 재사용 가능한 UI 프레임워크 설계',
   p_odin_b3:'다익스트라 기반 내비게이션 + Auto Play 기능 구현',
-  p_etc_meta:'프리랜서 · 일본 게임/SaaS 기업', p_etc_title:'그 외 라이브 프로젝트', p_etc_visual:'C# 서버 실시간 통신',
-  p_etc_b1:'<strong>MetaMahjong (온라인 마작):</strong> C# 서버 — <em>gRPC 통신 · WebSocket 통합</em>',
+  p_etc_meta:'프리랜서 · 일본 게임/SaaS 기업', p_etc_title:'그 외 라이브 프로젝트', p_etc_visual:'MetaMahjong · rium.io/mahjong',
+  p_etc_b1:'<strong>MetaMahjong (온라인 마작 · 출시):</strong> gRPC 양방향 스트림 + WebSocket을 같은 코드로 다루는 래퍼 — <em>서비스 코드 수정 없이 앱 · 웹 지원</em>',
+  p_etc_b5:'<strong>WordBreaker (시청자 참여형 벽돌깨기 · 출시):</strong> 4인 팀의 유일한 프로그래머 — In/OutGame 설계 · <em>기획자용 영역 에디터</em>',
   p_etc_b2:'<strong>CordGem (JRPG):</strong> UI 제외 전투 전체 · 스킬 이펙트·타이밍 툴 · FSM 적 AI · 굴절·반사 셰이더',
   p_etc_b3:'<strong>Freya:</strong> 육각형 타일 시스템 · Unity 미지원 3D Sprite 자체 구현',
   p_etc_b4:'<strong>마치가이 브레이커:</strong> NGUI UI · 정답률 시각화 셰이더',
@@ -941,7 +986,7 @@ ko: {
   c0_b1:'<strong>히어로즈스냅:</strong> 방치형 수집 RPG — 클라이언트 아키텍처 · 전투 · 게임/운영 서버 · 플랫폼 연동 · 빌드 자동화',
   c1_period:'2019.12 — 2026.01<span class="dur">일본 게임/SaaS 기업 4곳</span>', c1_dur:'일본 게임/SaaS 기업 4곳', c1_role:'프리랜서',
   c1_b1:'<strong>Offima:</strong> UE4 인테리어 시뮬레이션 — FBX 런타임 처리 · 2D→3D 변환',
-  c1_b2:'<strong>WordBreaker:</strong> Unity 웹 게임 — YouTube 시청자 참여형 벽돌깨기 · 클라이언트 단독 개발',
+  c1_b2:'<strong>WordBreaker:</strong> Unity 웹 게임 — YouTube 시청자 참여형 벽돌깨기 · 클라이언트 단독 개발 · 기획자용 영역 에디터',
   c1_b3:'<strong>CordGem:</strong> Unity JRPG — 배틀 시스템 · HLSL 셰이더 · FSM AI',
   c1_b4:'<strong>MetaMahjong:</strong> Unity 온라인 마작 — C# 서버 · gRPC 통신 · WebSocket 통합',
   c2_dur:'1년 9개월', c2_role:'정규직 · 일본',
@@ -965,7 +1010,7 @@ en: {
   nav_role:'Game Client Programmer',
   nav_about:'About', nav_proj:'Projects', nav_skill:'Skills', nav_career:'Career', nav_resume:'Resume',
   hero_title:'A game client programmer<br>who owns it end to end',
-  hero_body:'I design combat and screens, then build the <strong>server, data pipeline, and build automation</strong> behind them and take it all to live service. 10 years in the Japanese game industry; most recently, I was responsible for client and server on the idle collectible RPG <strong>Heroes Snap</strong>. When the engine can\'t do something, I build it — and I keep digging into rendering with DirectX 12.',
+  hero_body:'I design combat and screens, then build the <strong>server, data pipeline, and build automation</strong> behind them and see it through to live deployment with ownership. 10 years in the Japanese game industry; most recently, I was responsible for client and server on the idle collectible RPG <strong>Heroes Snap</strong>. When the engine can\'t do something, I build it — and I keep digging into rendering with DirectX 12.',
   hero_cta1:'View Resume', hero_cta2:'View Projects ↓',
   s1_label:'01. About',
   s1_title:'End to end on my own,<br>faster as a team',
@@ -1019,6 +1064,7 @@ en: {
   p_off_b1:'<strong>Self-developed runtime FBX Import/Export</strong> — a feature UE4 does not support',
   p_off_b2:'<strong>2D floor plan → 3D auto-conversion</strong> pipeline (about <em>30% less work time</em>)',
   p_off_b3:'Jenkins CI/CD — fully automated build/deploy + Slack notification integration',
+  p_off_b4:'<strong>How it carries over to games</strong> — extending the engine in C++ maps to runtime asset loading and mesh generation, data import and optimization to art-resource pipelines, and automation to faster team iteration',
   p_bp_meta:'Dropseed (Japan) · Full-time · 2018–2019', p_bp_title:'B-Project — Mobile Rhythm Game',
   p_bp_b1:'<strong>Score editor tool</strong> — a visual editor planners use directly, with real-time preview',
   p_bp_b2:'Score production time <em>reduced by 50%+</em> (Unity round-trip debug → create & test in-tool)',
@@ -1027,8 +1073,9 @@ en: {
   p_odin_b1:'<strong>Shadow Baking Tool</strong> — removed runtime computation for a <em>30% FPS gain</em>',
   p_odin_b2:'Reusable NGUI-based UI framework design',
   p_odin_b3:"Dijkstra-based navigation + Auto Play feature",
-  p_etc_meta:'Freelance · Game/SaaS companies in Japan', p_etc_title:'Other Live Projects', p_etc_visual:'C# server real-time communication',
-  p_etc_b1:'<strong>MetaMahjong (online mahjong):</strong> C# server — <em>gRPC communication · WebSocket integration</em>',
+  p_etc_meta:'Freelance · Game/SaaS companies in Japan', p_etc_title:'Other Live Projects', p_etc_visual:'MetaMahjong · rium.io/mahjong',
+  p_etc_b1:'<strong>MetaMahjong (online mahjong · released):</strong> wrapper handling gRPC bidirectional streams and WebSocket with the same code — <em>app and web supported without changing service code</em>',
+  p_etc_b5:'<strong>WordBreaker (viewer-participation brick breaker · released):</strong> sole programmer on a 4-person team — In/OutGame design · <em>area editor for planners</em>',
   p_etc_b2:'<strong>CordGem (JRPG):</strong> all combat except UI · skill effect/timing tool · FSM enemy AI · refraction/reflection shaders',
   p_etc_b3:'<strong>Freya:</strong> hexagonal tile system · self-implemented 3D Sprite unsupported by Unity',
   p_etc_b4:'<strong>Machigai Breaker:</strong> NGUI UI · answer-rate visualization shader',
@@ -1080,7 +1127,7 @@ ja: {
   nav_role:'Game Client Programmer',
   nav_about:'紹介', nav_proj:'プロジェクト', nav_skill:'コアスキル', nav_career:'職歴', nav_resume:'履歴書',
   hero_title:'ゲームクライアントを<br>最後まで担うプログラマー',
-  hero_body:'戦闘と画面を設計し、それを支える<strong>サーバー・データパイプライン・ビルド自動化</strong>まで自ら作ってライブ運営へつなげます。日本のゲーム業界で10年、直近では放置型収集RPG<strong>ヒーローズスナップ</strong>のクライアントとサーバーを担当しました。エンジンが対応していない機能は自分で作り、DirectX 12でレンダリングも掘り下げています。',
+  hero_body:'戦闘と画面を設計し、それを支える<strong>サーバー・データパイプライン・ビルド自動化</strong>を自ら作り、ライブ配信まで責任を持ってやり遂げます。日本のゲーム業界で10年、直近では放置型収集RPG<strong>ヒーローズスナップ</strong>のクライアントとサーバーを担当しました。エンジンが対応していない機能は自分で作り、DirectX 12でレンダリングも掘り下げています。',
   hero_cta1:'履歴書を見る', hero_cta2:'プロジェクトを見る ↓',
   s1_label:'01. 紹介',
   s1_title:'一人で最後まで、<br>チームはより速く',
@@ -1134,6 +1181,7 @@ ja: {
   p_off_b1:'<strong>ランタイムFBX Import/Exportを自社開発</strong> — UE4非対応機能を実装',
   p_off_b2:'<strong>2D図面 → 3D自動変換</strong>パイプライン（作業時間約<em>30%短縮</em>）',
   p_off_b3:'Jenkins CI/CD構築 — ビルド/デプロイ完全自動化＋Slack通知統合',
+  p_off_b4:'<strong>ゲーム開発へのつながり</strong> — エンジン機能のC++拡張はランタイムのアセット読み込み・メッシュ生成に、データ取り込み・最適化はアートリソースパイプラインに、自動化はチームの反復速度に活かせます',
   p_bp_meta:'Dropseed（日本）· 正社員 · 2018–2019', p_bp_title:'B-Project — モバイルリズムゲーム',
   p_bp_b1:'<strong>楽譜エディターツール開発</strong> — 企画者が直接使えるビジュアルエディター＋リアルタイムプレビュー',
   p_bp_b2:'楽譜制作時間を<em>50%以上短縮</em>（Unity往復デバッグ → ツール内で制作・テスト）',
@@ -1142,8 +1190,9 @@ ja: {
   p_odin_b1:'<strong>Shadow Baking Tool開発</strong> — ランタイム演算を除去し<em>FPS 30%向上</em>',
   p_odin_b2:'NGUIベースの再利用可能なUIフレームワーク設計',
   p_odin_b3:'ダイクストラベースのナビゲーション＋Auto Play機能実装',
-  p_etc_meta:'フリーランス · 日本のゲーム/SaaS企業', p_etc_title:'その他のライブプロジェクト', p_etc_visual:'C#サーバーリアルタイム通信',
-  p_etc_b1:'<strong>MetaMahjong（オンライン麻雀）:</strong> C#サーバー — <em>gRPC通信・WebSocket統合</em>',
+  p_etc_meta:'フリーランス · 日本のゲーム/SaaS企業', p_etc_title:'その他のライブプロジェクト', p_etc_visual:'MetaMahjong · rium.io/mahjong',
+  p_etc_b1:'<strong>MetaMahjong（オンライン麻雀・リリース済）:</strong> gRPC双方向ストリームとWebSocketを同じコードで扱うラッパー — <em>サービスコードを変えずにアプリ・Web対応</em>',
+  p_etc_b5:'<strong>WordBreaker（視聴者参加型ブロック崩し・リリース済）:</strong> 4人チーム唯一のプログラマー — In/OutGame設計・<em>企画者向けエリアエディター</em>',
   p_etc_b2:'<strong>CordGem（JRPG）:</strong> UI以外の戦闘全体・スキルエフェクト/タイミングツール・FSM敵AI・屈折/反射シェーダー',
   p_etc_b3:'<strong>Freya:</strong> 六角形タイルシステム・Unity非対応の3D Spriteを自社実装',
   p_etc_b4:'<strong>マチガイブレイカー:</strong> NGUI UI・正答率可視化シェーダー',
@@ -1451,6 +1500,23 @@ function drawTriOn(ctx, p, alpha) {
   window.addEventListener('resize', () => { clearTimeout(rto); rto = setTimeout(start, 200); });
   start();
 })();
+</script>
+<script>
+/* 인쇄용: YouTube iframe 대신 썸네일 + 링크 */
+document.querySelectorAll('.proj .video iframe[src*="youtube.com/embed/"]').forEach(f=>{
+  const id=f.src.split('/embed/')[1].split(/[?&]/)[0];
+  const a=document.createElement('a');a.className='print-thumb';a.href='https://www.youtube.com/watch?v='+id;
+  a.innerHTML='<img alt="" src="https://img.youtube.com/vi/'+id+'/hqdefault.jpg">';
+  f.parentNode.appendChild(a);
+});
+addEventListener('beforeprint',()=>document.querySelectorAll('.reveal').forEach(e=>e.classList.add('on')));
+/* 인쇄용: 뇌 애니메이션을 현재 프레임 이미지로 고정 */
+addEventListener('beforeprint',()=>{
+  const c=document.getElementById('brainCanvas'); if(!c) return;
+  let img=document.querySelector('.print-brain');
+  if(!img){img=document.createElement('img');img.className='print-brain';img.alt='';c.parentNode.appendChild(img);}
+  try{img.src=c.toDataURL('image/png');}catch(e){}
+});
 </script>
 </body>
 </html>

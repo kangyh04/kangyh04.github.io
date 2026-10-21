@@ -341,6 +341,17 @@
                 padding: 15px 20px;
             }
         }
+
+        @media print {
+            @page { size: A4; margin: 10mm; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .contact-bar { flex-direction: row !important; gap: 18px !important; padding: 12px 20px !important; }
+            .header { padding: 26px 20px !important; }
+            .content { padding: 24px 20px !important; }
+            .portfolio-cta a { color: #fff !important; }
+            .project-card, .experience-item, .skill-category, .education-item, .info-item { break-inside: avoid; page-break-inside: avoid; }
+            .section-title { break-after: avoid; page-break-after: avoid; }
+        }
     </style>
 </head>
 <body>
@@ -557,9 +568,9 @@
                     </div>
                     <div class="experience-content">
                         <ul>
-                            <li><strong>MetaMahjong:</strong> Unity 온라인 마작 (gRPC 통신, WebSocket 통합)</li>
+                            <li><strong>MetaMahjong:</strong> Unity 온라인 마작 (gRPC 통신, WebSocket 통합) · <a href="https://rium.io/mahjong" target="_blank">rium.io/mahjong</a></li>
                             <li><strong>CordGem:</strong> Unity JRPG (UI 제외 전투 전체, 스킬 이펙트·타이밍 툴, FSM 적 AI, 굴절·반사 셰이더)</li>
-                            <li><strong>WordBreaker:</strong> Unity 웹 게임 (YouTube 시청자 참여형 벽돌깨기, 클라이언트 단독 개발)</li>
+                            <li><strong>WordBreaker:</strong> Unity 웹 게임 (YouTube 시청자 참여형 벽돌깨기, 클라이언트 단독 개발, 기획자용 영역 에디터)</li>
                             <li><strong>Offima:</strong> UE4 기반 인테리어 시뮬레이션 (FBX 런타임 처리, 2D→3D 변환)</li>
                         </ul>
                     </div>
